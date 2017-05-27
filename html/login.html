@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<title>登录</title>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link href="resources/Wopop_files/style_log.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="resources/Wopop_files/style.css">
+<link rel="stylesheet" type="text/css" href="resources/Wopop_files/userpanel.css">
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="resources/lib/html5shiv.js"></script>
+<script type="text/javascript" src="resources/lib/respond.min.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+<script type="text/javascript" src="resources/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<script type="text/javascript" src="resources/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="resources/lib/jquery/1.9.1/jquery.cookie.js"></script>
+<script type="text/javascript" src="resources/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="resources/lib/layer/2.4/layer.js" ></script>
+<script type="text/javascript" src="resources/static/h-ui/js/app.js" ></script>
+<script type="text/javascript" src="resources/static/h-ui/js/data.js?id=111" ></script>
+<script>
+	$(function(){
+		 $("#button").unbind().bind("click",function(){		 	 
+		 	  $d.login();
+		 });
+		 $("#iforget").unbind().bind("click",function(){
+		 	    $("#login_model").hide();
+		 	    $("#forget_model").show();
+		 	    $("#denglou").unbind().bind("click",function(){
+		 	    	 $("#login_model").show();
+		 	         $("#forget_model").hide();
+		 	    })
+		 })
+	})
+</script>
+</head>
+
+<body class="login" mycollectionplug="bind">
+<div class="login_m">
+<div class="login_logo"><img src="./resources/Wopop_files/logo.png?id=12" width="196" height="46"></div>
+<div class="login_boder">
+
+<div class="login_padding" id="login_model" >
+
+  <h2>用户名</h2>
+  <label>
+    <input type="text" id="username" class="txt_input txt_input2" onfocus="if (value ==&#39;您的用户名&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;您的用户名&#39;}" value="您的用户名">
+  </label>
+  <h2>密码</h2>
+  <label>
+    <input type="password" name="textfield2" id="userpwd" class="txt_input" onfocus="if (value ==&#39;******&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;******&#39;}" value="******">
+  </label>
+ 
+ 
+
+ 
+  <p class="forgot"><a id="iforget" href="javascript:void(0);">忘记密码?</a></p>
+  <div class="rem_sub">
+  <div class="rem_sub_l">
+  <input type="checkbox" name="checkbox" id="save_me">
+   <label for="checkbox">记住密码</label>
+   </div>
+    <label>
+      <input type="submit" class="sub_button" name="button" id="button" value="登录" style="opacity: 0.7;">
+    </label>
+  </div>
+</div>
+
+
+<div id="forget_model" class="login_padding"  style="display:none"> 
+<br>
+
+   <h1>找回密码</h1>
+   <br>
+   <div class="forget_model_h2">(请在下面输入您注册的电子邮件，系统将自动重置用户的密码并将其发送到用户注册的电子邮件地址。)</div>
+    <label>
+    <input type="text" id="usrmail" class="txt_input txt_input2">
+   </label>
+
+ 
+  <div class="rem_sub">
+  <div class="rem_sub_l">
+   </div>
+    <label>
+     <input type="submit" class="sub_buttons" name="button" id="Retrievenow" value="现在获取" style="opacity: 0.7;">
+     　　　
+     <input type="submit" class="sub_button" name="button" id="denglou" value="返回" style="opacity: 0.7;">　　
+    
+    </label>
+  </div>
+</div>
+
+
+
+
+
+
+<!--login_padding  Sign up end-->
+</div><!--login_boder end-->
+</div><!--login_m end-->
+ <br> <br>
+<p align="center">通知：本系统不在对IE8以下浏览器支持，请见谅</p> <br>
+<p align="center">版权所有&copy;北京聚通达科技有限公司</p>
+
+
+
+</body></html>

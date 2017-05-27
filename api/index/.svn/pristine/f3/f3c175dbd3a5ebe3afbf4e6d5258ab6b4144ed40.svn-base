@@ -1,0 +1,69 @@
+<?php
+namespace Home\Controller;
+use Think\Controller;
+class IndexController extends Controller {
+    public function index($id=0){
+        $com = $_POST["com"];
+        $par = $_POST["par"];
+        $arr = json_decode($par,true);
+        $str ="";
+        switch ($com) {
+          case 'login':
+             $str = $this -> Login($arr);
+          break;
+          case 'Wx_Ty_Add':
+             $str = $this -> Wx_Ty_Add($arr);
+          break;
+          case 'Wx_Read_Ty': //读取微信类型列表
+             $str = $this -> Wx_Read_Ty();
+            break;
+          default:
+            # code...
+            break;
+        }
+        
+        echo $str;
+
+   }
+   public function Login($par){
+         
+       $Model = M();
+       $list = $Model
+               ->query("select * from users where username='". $arr["username"]."' and password='".md5($arr['password'])."'");
+      
+       $str = "";
+       if($list){
+           $str = $this -> Json("200","登录成功","");
+       }
+       else  $str = $this -> Json("201","登录失败","");
+
+       return $str;
+
+   }
+   public function Wx_Ty_Add($par){
+       $wx = M("weixinType");
+       $arr = array('name' => $par["name"] );
+       $str = "";
+       if($wx->add($arr)){
+           $str = $this -> Json("200","类型添加成功","");
+       }
+       else $str = $this -> Json("201","类型添加失败","");
+       return $str;
+   }
+   public function Wx_Read_Ty(){
+        $wx = M("weixinType");
+        $res = $wx -> field("id,name") -> select();
+        $str = "";
+        foreach ($res as $k => $v) {
+           $str .="{\"id\":\"".$v["id"]."\",\"name\":\"".$v["name"]."\"},";
+        }      
+        if(strlen($str)>0) {
+            return  $this -> Json("200","list",substr($str,0,-1));
+        }
+        else return $this->Json("201","error: list is empty","");
+   }
+   public function Json($code,$msg,$arr){
+       return "{\"code\":\"".$code."\",\"msg\":\"".$msg."\",\"data\":[".$arr."]}";
+   }
+
+}

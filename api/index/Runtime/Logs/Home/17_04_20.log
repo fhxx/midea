@@ -1,0 +1,384 @@
+[ 2017-04-20T17:36:55+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000653s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001193s ]
+SQL: select * from users where username='jutongda' and password='e10adc3949ba59abbe56e057f20f883e' [ RunTime:0.0499s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002431s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002497s ]
+
+[ 2017-04-20T17:37:00+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000279s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000489s ]
+SQL: select * from users where username='admin' and password='e10adc3949ba59abbe56e057f20f883e' [ RunTime:0.0327s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000543s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000593s ]
+
+[ 2017-04-20T17:38:21+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000252s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000422s ]
+SQL: select * from users where username='admin' and password='e10adc3949ba59abbe56e057f20f883e' [ RunTime:0.0141s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000497s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000529s ]
+
+[ 2017-04-20T17:38:40+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000300s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000517s ]
+SQL: select * from users where username='jutongda' and password='e10adc3949ba59abbe56e057f20f883e' [ RunTime:0.0132s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000540s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000582s ]
+
+[ 2017-04-20T17:39:41+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000421s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000712s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:39:41+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000412s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000699s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_media_type' doesn't exist
+
+[ 2017-04-20T17:39:41+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000417s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000708s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_ordertake_range' doesn't exist
+
+[ 2017-04-20T17:39:51+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000405s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000688s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:39:51+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000363s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000623s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_media_type' doesn't exist
+
+[ 2017-04-20T17:39:51+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000452s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000735s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_ordertake_range' doesn't exist
+
+[ 2017-04-20T17:40:12+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000394s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000708s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:40:12+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000396s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000694s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_media_type' doesn't exist
+
+[ 2017-04-20T17:40:12+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000378s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000676s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_ordertake_range' doesn't exist
+
+[ 2017-04-20T17:40:12+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000383s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000674s ]
+SQL: SHOW COLUMNS FROM `tg_weixin` [ RunTime:0.0248s ]
+SQL: SELECT DISTINCT  `city` FROM `tg_weixin` WHERE ( city!='0' and city!='' )  [ RunTime:0.0353s ]
+NOTIC: [2] Missing argument 3 for Home\Controller\IndexController::Json(), called in /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php on line 1048 and defined /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 1060 行.
+NOTIC: [8] Undefined variable: arr /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 1061 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000470s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000526s ]
+
+[ 2017-04-20T17:40:12+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000627s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000937s ]
+SQL: SHOW COLUMNS FROM `tg_weixin` [ RunTime:0.0281s ]
+SQL: SELECT * FROM `tg_weixin` WHERE `is_del` = 0 ORDER BY id desc LIMIT 0,20   [ RunTime:0.0133s ]
+SQL: SELECT `id` FROM `tg_weixin` WHERE `is_del` = 0  [ RunTime:0.0120s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:40:34+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000380s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000671s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:40:34+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000400s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000696s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_media_type' doesn't exist
+
+[ 2017-04-20T17:40:34+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000380s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000660s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_ordertake_range' doesn't exist
+
+[ 2017-04-20T17:40:35+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000432s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000760s ]
+SQL: SHOW COLUMNS FROM `tg_weixin` [ RunTime:0.0397s ]
+SQL: SELECT DISTINCT  `city` FROM `tg_weixin` WHERE ( city!='0' and city!='' )  [ RunTime:0.0120s ]
+NOTIC: [2] Missing argument 3 for Home\Controller\IndexController::Json(), called in /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php on line 1048 and defined /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 1060 行.
+NOTIC: [8] Undefined variable: arr /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 1061 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000531s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000564s ]
+
+[ 2017-04-20T17:40:35+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000429s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000721s ]
+SQL: SHOW COLUMNS FROM `tg_weixin` [ RunTime:0.0246s ]
+SQL: SELECT * FROM `tg_weixin` WHERE `is_del` = 0 ORDER BY id desc LIMIT 0,20   [ RunTime:0.0625s ]
+SQL: SELECT `id` FROM `tg_weixin` WHERE `is_del` = 0  [ RunTime:0.0180s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:44:52+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000401s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000744s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:44:53+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000376s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000645s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_media_type' doesn't exist
+
+[ 2017-04-20T17:44:53+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000414s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000746s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_ordertake_range' doesn't exist
+
+[ 2017-04-20T17:44:53+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000446s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000804s ]
+SQL: SHOW COLUMNS FROM `tg_weixin` [ RunTime:0.0437s ]
+SQL: SELECT DISTINCT  `city` FROM `tg_weixin` WHERE ( city!='0' and city!='' )  [ RunTime:0.0194s ]
+NOTIC: [2] Missing argument 3 for Home\Controller\IndexController::Json(), called in /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php on line 1048 and defined /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 1060 行.
+NOTIC: [8] Undefined variable: arr /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 1061 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000488s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000518s ]
+
+[ 2017-04-20T17:44:53+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000433s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000781s ]
+SQL: SHOW COLUMNS FROM `tg_weixin` [ RunTime:0.0202s ]
+SQL: SELECT * FROM `tg_weixin` WHERE `is_del` = 0 ORDER BY id desc LIMIT 0,20   [ RunTime:0.0369s ]
+SQL: SELECT `id` FROM `tg_weixin` WHERE `is_del` = 0  [ RunTime:0.0404s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:45:52+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000427s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000728s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:45:53+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000377s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000654s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_media_type' doesn't exist
+
+[ 2017-04-20T17:45:53+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000396s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000705s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_ordertake_range' doesn't exist
+
+[ 2017-04-20T17:45:53+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000411s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000712s ]
+SQL: SHOW COLUMNS FROM `tg_weixin` [ RunTime:0.0144s ]
+SQL: SELECT DISTINCT  `city` FROM `tg_weixin` WHERE ( city!='0' and city!='' )  [ RunTime:0.0119s ]
+NOTIC: [2] Missing argument 3 for Home\Controller\IndexController::Json(), called in /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php on line 1048 and defined /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 1060 行.
+NOTIC: [8] Undefined variable: arr /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 1061 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000544s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000585s ]
+
+[ 2017-04-20T17:45:53+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000412s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000743s ]
+SQL: SHOW COLUMNS FROM `tg_weixin` [ RunTime:0.0166s ]
+SQL: SELECT * FROM `tg_weixin` WHERE `is_del` = 0 ORDER BY id desc LIMIT 0,20   [ RunTime:0.0111s ]
+SQL: SELECT `id` FROM `tg_weixin` WHERE `is_del` = 0  [ RunTime:0.0126s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:46:23+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000609s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000901s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:46:23+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000403s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000712s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_media_type' doesn't exist
+
+[ 2017-04-20T17:46:23+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000403s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000794s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_ordertake_range' doesn't exist
+
+[ 2017-04-20T17:47:54+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000290s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000529s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:47:55+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000281s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000499s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:53:30+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000413s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000705s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_media_type' doesn't exist
+
+[ 2017-04-20T17:53:30+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000397s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000668s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:53:30+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000694s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001166s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_ordertake_range' doesn't exist
+
+[ 2017-04-20T17:53:33+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000282s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000531s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:53:59+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000396s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000685s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:53:59+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000381s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000654s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_media_type' doesn't exist
+
+[ 2017-04-20T17:53:59+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000765s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001060s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_ordertake_range' doesn't exist
+
+[ 2017-04-20T17:54:20+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000399s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000685s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:54:20+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000386s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000662s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_media_type' doesn't exist
+
+[ 2017-04-20T17:54:21+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000444s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000728s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_ordertake_range' doesn't exist
+
+[ 2017-04-20T17:54:24+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000273s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000485s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:56:55+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000535s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000934s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:56:55+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000496s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001062s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_media_type' doesn't exist
+
+[ 2017-04-20T17:56:55+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000440s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000776s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_ordertake_range' doesn't exist
+
+[ 2017-04-20T17:56:58+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000332s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000642s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:57:26+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000873s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:57:26+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000374s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000648s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_media_type' doesn't exist
+
+[ 2017-04-20T17:57:26+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000393s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000675s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_ordertake_range' doesn't exist
+
+[ 2017-04-20T17:57:32+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000278s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000508s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:58:11+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000264s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000461s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+
+[ 2017-04-20T17:58:19+08:00 ] 127.0.0.1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000261s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000447s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'media_resorce.wx_weixin_type' doesn't exist
+

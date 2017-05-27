@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="hui/lib/html5shiv.js"></script>
+		<script type="text/javascript" src="hui/lib/respond.min.js"></script>
+		<![endif]-->
+		<link rel="stylesheet" type="text/css" href="resources/static/h-ui/css/H-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="resources/lib/Hui-iconfont/1.0.8/iconfont.min.css" />
+		<link rel="stylesheet" type="text/css" href="resources/static/h-ui/css/app.css?od=11211" />
+		<link rel="stylesheet" type="text/css" href="resources/lib/icheck/icheck.css" />
+		<!--[if lt IE 9]>
+		<link href="hui/static/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css" />
+		<![endif]-->
+		<!--[if IE 6]>
+		<script type="text/javascript" src="hui/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+		<script>DD_belatedPNG.fix('*');</script>
+		<![endif]-->
+		<title>媒介资源后台管理系统</title>
+		<script type="text/javascript" src="resources/lib/jquery/1.9.1/jquery.min.js"></script> 
+		<script type="text/javascript" src="resources/lib/jquery/1.9.1/jquery.cookie.js"></script>
+		<script type="text/javascript" src="resources/static/h-ui/js/jquery.cityselect.js?id=123" ></script>
+		<script type="text/javascript" src="resources/static/h-ui/js/jquery-form.js" ></script>
+		<script type="text/javascript" src="resources/static/h-ui/js/ajaxfileupload.js?id=123" ></script>
+		<script type="text/javascript" src="resources/static/h-ui/js/H-ui.min.js"></script>
+		<script type="text/javascript" src="resources/lib/layer/2.4/layer.js?id=123" ></script>
+		<script type="text/javascript" src="resources/static/h-ui/js/template.js" ></script>
+		<script type="text/javascript" src="resources/static/h-ui/js/app.js?id=111" ></script>
+		<script type="text/javascript" src="resources/static/h-ui/js/data.js?id=1121" ></script>
+		<script>
+			$(function(){
+				if($.cookie("username")=="null"){ window.location.href="login.html" }
+				else{
+					 $mc.GetUser();
+					 $("#citySelect").citySelect({  
+					       nodata: "none",  
+					       required: false
+					 }); 
+					 $d.GetWxType("wx");$d.MediaType();$d.Ordertake("wx");
+                      
+                    $("#add_wx_type").unbind().bind("click",function(){//维护公众号类型按钮
+						$datalayer.WxTypeAdd("wx");
+					})
+					$("#wx_ordertake_range").unbind().bind("click",function(){ //维护接单范围按钮
+						$datalayer.ordertakeAdd("wx");
+					})
+
+					 $("#wx_save").unbind().bind("click",function(){
+                          $d.wxAdd();
+					 });
+
+					 $("#wx_reset").unbind().bind("click",function(){
+					 	 $layer.confirm("确定要重置页面内容吗？",function(){
+                             $mc.goURL(window.location.href);
+					 	 })
+					 });
+					 $("#wx_name").blur(function(){
+					 	  if($(this).val()!=""){
+					 	  	   $("#wx_id_box").show();
+					 	  } 
+					 	  else $("#wx_id_box").hide();
+					 });
+					 $("#is_qualification").change(function(){
+					 	 var v = $(this).val();
+					 	 if(v==0) {
+					 	 	  $("#is_qualification_box").hide();
+					 	 }
+					 	 else $("#is_qualification_box").show();
+					 });
+					 $("#is_homepage_recommend").change(function(){
+					 	  $d.HomePage($(this));
+					 })
+					 //上传头像
+					 $("#file1").change(function(){
+					 	  var path = document.getElementById("file1").value;
+					 	  var zh = path.substr(path.length - 4).toLowerCase();
+					 	  if ((zh != ".jpg") && (zh != ".png")) {         
+					         $layer.msg("只能上传.jpg或.png图片");
+					      }
+					      else{
+                              $("#from1").ajaxSubmit({
+                                   type: "post",
+                                   url:'/api/index.php/Home/Upimg',
+                                   dataType: "text",
+                                   success: function (str) {
+                                   	   console.log(str);
+                                   	   $("#head-img").prop("src","/api/index/"+str).attr("data-src",str);
+                                   }
+                              })                           
+                            /*$.ajaxFileUpload({
+                            	 url:'/api/index.php/Home/Upimg',
+                            	 type:'POST',
+                            	 secureuri:false,
+                            	 fileElementId:'file1',
+                            	 dataType:'json',
+                            	 success:function(data,status){
+                            	 	 console.log(data)
+                            	 	 console.log(status);
+                            	 },
+                            	 error:function(data,status,e){
+                            	 	console.log(data);
+                            	 }
+                            })*/
+					      }
+					 })
+				}
+			})
+		</script>
+	</head>
+	<body>
+	  <form id="from1" name="from1" method="post"  enctype="multipart/form-data"> 
+	  <header>
+	  	 <div class="f-l l-box hl-50 "><span class="ml-20 f-18 c-fff">媒介资源后台管理系统</span></div>
+	  	 <div class="f-r r-box hl-50 mr-20">
+	  	 	<span class="f-16 c-fff user"><i class="Hui-iconfont">&#xe62c;</i>&nbsp;<font id="uname"></font>&nbsp;</span>
+	  	 	<div class="option-box pos-a">
+	  	 	  <ul>
+	  	 	  	 <li>
+	  	 	  	 	<div class="f-l l-box"><i class="Hui-iconfont">&#xe61d;</i></div>
+	  	 	  	 	<div class="f-l r-box" id="setting">设置</div>
+	  	 	  	 </li>
+	  	 	  	  <li>
+	  	 	  	 	<div class="f-l l-box"><i class="Hui-iconfont">&#xe644;</i></div>
+	  	 	  	 	<div class="f-l r-box" id="outlogin">退出</div>
+	  	 	  	 </li>
+	  	 	  </ul>
+	  	 	</div>
+	  	 </div>
+	  </header>
+	  <section class="w100 f-l mt-50 art-body">
+	  	<div class="col-sm-3 col-lg-2 pos-f left bg-fff">
+	  	   <ul>
+	  	   	  <li class="active"><a><i class="Hui-iconfont">&#xe681;</i>微信公众号推广</a></li>
+	  	   	  <li><a href="wblist.html"><i class="Hui-iconfont">&#xe681;</i>微博推广</a></li>
+	  	   	  <li><a href="applist.html"><i class="Hui-iconfont">&#xe681;</i>APP推广</a></li>
+	  	   	  <li><a href="newslist.html"><i class="Hui-iconfont">&#xe681;</i>新闻营销</a></li>
+	  	   	  <li><a><i class="Hui-iconfont">&#xe681;</i>腾讯社交类广告</a></li>
+	  	   </ul>
+	  	</div>
+	  	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 right mb-30">
+	  	  <nav class="w100 f-l">
+	  	    <span class="ml-15 f-l"><i class="Hui-iconfont">&#xe67f;</i> / <a href="wxlist.html">微信公众号推广</a> /添加微信公众号</span>
+            <span class="mr-15 f-r"><a href="wxlist.html"   class="btn btn-default radius" style="line-height: 18px">返回&nbsp;<i class="Hui-iconfont pos-r" style="color:#333; top:0px">&#xe66b;</i></a></span>
+	  	  </nav>
+	  	  <div class="w96 ml2-0 mt-10 f-l">
+	  	  	 <div class="w100 f-l radius select-body">
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box"><font>*</font>公众号类型：</div>
+	  	  	 	 	 <div class="flex r-box">
+	  	  	 	 	 	<span class="select-box radius add-input-box">						  
+						  <select class="select" size="1" id="wx_type_list">
+						     <script id="typelist" type="text/html">
+						      {{each data as value i }}					           
+						         <option value="{{value['id']}}">{{value['name']}}</option>
+						      {{/each}}
+						    </script>
+						  </select>
+						</span>
+						<a class="btn btn-link" id="add_wx_type">维护</a>
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box"><font>*</font>媒体分类：</div>
+	  	  	 	 	 <div class="flex r-box" id="radio-box">
+	  	  	 	 	    <script id="radiolist" type="text/html">
+	  	  	 	 	      {{each data as value i }}
+	  	  	 	 	       <div class="radio-box">
+						     <input type="radio" id="radio-{{i}}" value="{{value['id']}}" name="media_type_id">
+						     <label for="radio-{{i}}">{{value["name"]}}</label>
+						   </div>
+						   {{/each}}
+	  	  	 	 	    </script>	  	  	 	 	 	
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 
+	  	  	 	  <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box"><font>*</font>头像：</div>
+	  	  	 	 	 <div class="flex r-box">
+	  	  	 	 	 	<span class="btn-upload mt-5">
+						  <a href="javascript:void();" class="btn btn-primary radius" style="margin-top:-23px;"><i class="Hui-iconfont">&#xe642;</i> 浏览图片文件</a>
+						  <input type="file" multiple name="file_0" class="input-file" name="file1" id="file1">
+						</span>
+						<img src="resources/static/h-ui/images/ucnter/avatar-default.jpg"  id="head-img" data-src=""  style="width: 50px; height: 50px;"/>
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box"><font>*</font>公众号名称：</div>
+	  	  	 	 	 <div class="flex r-box">	  	  	 	 	 	
+						  <input type="text" id="wx_name" class="input-text radius size-M w-300" />
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box" style="display: none" id="wx_id_box">
+	  	  	 	 	 <div class="ml-10 l-box"><font>*</font>微信号：</div>
+	  	  	 	 	 <div class="flex r-box">	  	  	 	 	 	
+						  <input type="text" id="wx_id" class="input-text radius size-M w-300" />
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box">媒体介绍：</div>
+	  	  	 	 	 <div class="flex r-box">	  	  	 	 	 	
+						 <input type="text" id="media_intro" class="input-text radius size-M w-300" />
+						 <span class="c-red ml-10">0/70</span><span class="text-info c-999 ml-10">注：限70字以内</span>
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box"><font>*</font>粉丝数：</div>
+	  	  	 	 	 <div class="flex r-box">	  	  	 	 	 	
+						  <input type="text" id="fans_amount" class="input-text radius size-M w-300" value="0" />
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box"><font>*</font>平均阅读量：</div>
+	  	  	 	 	 <div class="flex r-box">	  	  	 	 	 	
+						  <input type="text" id="read_avg_amount" class="input-text radius size-M w-300" value="0"/>
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box">是否认证：</div>
+	  	  	 	 	 <div class="flex r-box">
+	  	  	 	 	 	<span class="select-box radius add-input-box">
+						  <select class="select" size="1" id="is_qualification">					 
+						    <option value="0">否</option>
+						    <option value="1">是</option>
+						  </select>
+						</span>
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box" id="is_qualification_box" style="display: none">
+	  	  	 	 	 <div class="ml-10 l-box"><font>*</font>认证主体：</div>
+	  	  	 	 	 <div class="flex r-box">
+	  	  	 	 	  	<input type="text" id="qualification_body" class="input-text radius size-M w-300" />
+	  	  	 	 	  	<span class="text-info c-999 ml-10">认证公众号为必填项</span>
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	  <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box"><font></font>公账号标签</div>
+	  	  	 	 	 <div class="flex r-box">	  	  	 	 	 	
+						  <input type="text" id="tags" class="input-text radius size-M w-300"/>
+						  <span class="text-info c-999 ml-10">多个标签请用“;”分割</span>
+	  	  	 	 	 </div>
+
+	  	  	 	 </div>
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box"><font>*</font>号主报价-硬广：</div>
+	  	  	 	 	 <div class="flex r-box">
+	  	  	 	 	 	头条：<input type="text" id="hard_1_price" class="input-text radius size-M w-80" value="0"/>&nbsp;
+	  	  	 	 	 	增价指数：<input type="text" id=hard_1_add class="input-text radius size-M w-80" value="1.0"/>&nbsp;&nbsp;&nbsp;
+	  	  	 	 	 	二条：<input type="text" id="hard_2_price" class="input-text radius size-M w-80" value="0"/>&nbsp;
+	  	  	 	 	 	增价指数：<input type="text" id="hard_2_add" class="input-text radius size-M w-80" value="1.0"/>
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box"><font>*</font>号主报价-软广：</div>
+	  	  	 	 	 <div class="flex r-box">
+	  	  	 	 	 	头条：<input type="text" id="soft_1_price" class="input-text radius size-M w-80" value="0"/>&nbsp;
+	  	  	 	 	 	增价指数：<input type="text" id="soft_1_add" class="input-text radius size-M w-80" value="1.0"/>&nbsp;&nbsp;&nbsp;
+	  	  	 	 	 	二条：<input type="text" id="soft_2_price" class="input-text radius size-M w-80" value="0"/>&nbsp;
+	  	  	 	 	 	增价指数：<input type="text" id="soft_2_add" class="input-text radius size-M w-80" value="1.0"/>
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box"><font>*</font>是否首页：</div>
+	  	  	 	 	 <div class="flex r-box">
+	  	  	 	 	 	<span class="select-box radius add-input-box">
+						  <select class="select" size="1" id="is_homepage_recommend">					 
+						    <option value="0">否</option>
+						    <option value="1">是</option>
+						  </select>
+						</span>
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box"><font>*</font>接单范围：</div>
+	  	  	 	 	 <div class="flex r-box">
+	  	  	 	 	 	<span class="select-box radius add-input-box">
+						  <select class="select" size="1" id="ordertake_range_id">	
+                            <script id="ordertakelist" type="text/html">
+                                {{each data as value i }}
+                                    <option value="{{value['id']}}">{{value["name"]}}</option>
+                                {{/each}}
+                            </script>
+						  </select>
+						</span>
+						<a class="btn btn-link" id="wx_ordertake_range">维护</a>
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box"><font></font>城市：</div>
+	  	  	 	 	 <div class="flex r-box" id="citySelect">
+	  	  	 	 	 	<span class="select-box radius add-input-box-M">
+						  <select class="select prov" id="province" size="1">					 
+						    <option value="0">请选择</option>
+						  </select>
+						</span>
+						<span class="select-box radius add-input-box-M" style="display: none">
+						  <select class="select city" id="city" size="1">					 
+						     <option value="0">请选择</option>
+						  </select>
+						</span>
+						<span class="select-box radius add-input-box-M" style="display: none">
+						  <select class="select dist" id="county" size="1">					 
+						     <option value="0">请选择</option>
+						  </select>
+						</span>
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 <div class="w100 mb-30 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box">&nbsp;</div>
+	  	  	 	 	 <div class="flex r-box">
+	  	  	 	 	 	<a class="btn btn-primary radius" id="wx_save"><i class="Hui-iconfont">&#xe632;</i>&nbsp;保存</a>
+	  	  	 	 	 	<a class="btn  btn-danger radius" id="wx_reset"><i class="Hui-iconfont">&#xe66c;</i>&nbsp;重置</a>
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 
+	  	  	 </div>
+	  	  </div>
+	  	  
+	  	</div>
+	  </section>
+	  </form>
+	</body>
+</html>
+

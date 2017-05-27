@@ -1,0 +1,37 @@
+var api = "/api/index.php";
+var $data={
+	 Login:function(username,password,callback){	 	
+	 	 $.post(api,{
+	 	 	 "com":"login",
+	 	 	 "par": "{\"username\":\""+username+"\",\"password\":\""+password+"\"}"
+	 	 },function(out){
+	 	 	 if(typeof callback==="function")
+	 	 	 {
+	 	 	 	callback(out);
+	 	 	 }
+	 	 },"json");
+	 },	 
+	 Wx_Ty_Add:function(field,callback){
+	 	 $.post(api,{
+	 	 	 "com":"Wx_Ty_Add",
+	 	 	 "par": "{\"name\":\""+field+"\"}"
+	 	 },function(out){	 	 	 
+	 	 	 if(typeof callback==="function")
+	 	 	 {
+	 	 	 	callback(out);
+	 	 	 }
+	 	 },"json");
+	 },
+	 GetWxType:function(callback){
+	 	 $.post(api,{
+	 	 	 "com":"Wx_Read_Ty",
+	 	 	 "par": "{}"
+	 	 },function(out){	
+
+	 	 	 if(typeof callback==="function")
+	 	 	 {
+	 	 	 	callback(out);
+	 	 	 }
+	 	 },"json");
+	 }
+}

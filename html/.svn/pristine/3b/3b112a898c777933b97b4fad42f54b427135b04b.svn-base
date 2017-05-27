@@ -1,0 +1,137 @@
+var api = "/api/index.php";
+var $data={
+	 Login:function(username,password,callback){	 	
+	 	 $.post(api,{
+	 	 	 "com":"login",
+	 	 	 "par": "{\"username\":\""+username+"\",\"password\":\""+password+"\"}"
+	 	 },function(out){
+	 	 	 if(typeof callback==="function")
+	 	 	 {
+	 	 	 	callback(out);
+	 	 	 }
+	 	 },"json");
+	 },	 
+	 Wx_Ty_Add:function(field,callback){
+	 	 $.post(api,{
+	 	 	 "com":"Wx_Ty_Add",
+	 	 	 "par": "{\"name\":\""+field+"\"}"
+	 	 },function(out){	 	 	 
+	 	 	 if(typeof callback==="function")
+	 	 	 {
+	 	 	 	callback(out);
+	 	 	 }
+	 	 },"json");
+	 },
+	 Wx_Range_Add:function(field,callback){
+	 	 $.post(api,{
+	 	 	 "com":"Wx_Range_Add",
+	 	 	"par": "{\"name\":\""+field+"\"}"
+	 	 },function(out){
+	 	 	 if(typeof callback==="function")
+	 	 	 {
+	 	 	 	callback(out);
+	 	 	 }
+	 	 },"json");
+	 },
+	 GetWxType:function(callback){
+	 	 $.post(api,{
+	 	 	 "com":"Wx_Read_Ty",
+	 	 	 "par": "{}"
+	 	 },function(out){	
+
+	 	 	 if(typeof callback==="function")
+	 	 	 {
+	 	 	 	callback(out);
+	 	 	 }
+	 	 },"json");
+	 },
+	 MediaType:function(callback){
+	 	 $.post(api,{
+	 	 	 "com":"MediaType",
+	 	 	 "par": "{}"
+	 	 },function(out){
+	 	 	 if(typeof callback==="function")
+	 	 	 {
+	 	 	 	callback(out);
+	 	 	 }
+	 	 },"json"); 
+	 },
+
+	 Ordertake:function(callback){
+         $.post(api,{
+	 	 	 "com":"Ordertake",
+	 	 	 "par": "{}"
+	 	 },function(out){
+	 	 	 if(typeof callback==="function")
+	 	 	 {
+	 	 	 	callback(out);
+	 	 	 }
+	 	 },"json"); 
+	 },
+	 AddWx:function(par,callback){
+	 	  $.post(api,{
+	 	 	 "com":"AddWx",
+	 	 	 "par": par
+	 	 },function(out){
+	 	 	 if(typeof callback==="function")
+	 	 	 {
+	 	 	 	callback(out);
+	 	 	 }
+	 	 },"json"); 
+	 },
+	 wxList:function(par,p,callback){
+	 	  $.post(api,{
+	 	 	 "com":"wxList",
+	 	 	 "par": "{"+par+",\"p\":\""+p+"\"}"
+	 	 },function(out){
+	 	 	 if(typeof callback==="function")
+	 	 	 {
+	 	 	 	callback(out);
+	 	 	 }
+	 	 },"json"); 
+	 },
+	 delWxData:function(par,callback){
+	 	  $.post(api,{
+	 	 	 "com":"delWxData",
+	 	 	 "par": par
+	 	 },function(out){
+	 	 	 if(typeof callback==="function")
+	 	 	 {
+	 	 	 	callback(out);
+	 	 	 }
+	 	 },"json"); 
+	 },
+	 UpdateFans:function(id,amount,callback){
+        $.post(api,{
+	 	 	 "com":"UpdateFans",
+	 	 	 "par": "{\"id\":\""+id+"\",\"amount\":\""+amount+"\"}"
+	 	 },function(out){
+	 	 	 if(typeof callback==="function")
+	 	 	 {
+	 	 	 	callback(out);
+	 	 	 }
+	 	 },"json"); 
+	 },
+	 UpdateRead:function(id,amount,callback){
+        $.post(api,{
+	 	 	 "com":"UpdateRead",
+	 	 	 "par": "{\"id\":\""+id+"\",\"amount\":\""+amount+"\"}"
+	 	 },function(out){
+	 	 	 if(typeof callback==="function")
+	 	 	 {
+	 	 	 	callback(out);
+	 	 	 }
+	 	 },"json"); 
+	 },
+	 PriceEdit:function(par,callback){
+	 	 $.post(api,{
+	 	 	 "com":"PriceEdit",
+	 	 	 "par": par
+	 	 },function(out){
+	 	 	 if(typeof callback==="function")
+	 	 	 {
+	 	 	 	callback(out);
+	 	 	 }
+	 	 },"json"); 
+	 }
+}

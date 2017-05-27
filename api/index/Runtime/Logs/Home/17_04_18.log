@@ -1,0 +1,316 @@
+[ 2017-04-18T09:20:00+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000244s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000416s ]
+SQL: select * from users where username='jutongda' and password='e10adc3949ba59abbe56e057f20f883e' [ RunTime:0.0102s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000491s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000522s ]
+
+[ 2017-04-18T09:20:10+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000417s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000724s ]
+SQL: SHOW COLUMNS FROM `wx_weixin_type` [ RunTime:0.0102s ]
+SQL: SELECT `id`,`name` FROM `wx_weixin_type` WHERE `type` = 'wx'  [ RunTime:0.0118s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000555s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000607s ]
+
+[ 2017-04-18T09:20:10+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000485s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000798s ]
+SQL: SHOW COLUMNS FROM `wx_media_type` [ RunTime:0.0095s ]
+SQL: SELECT `id`,`name` FROM `wx_media_type`  [ RunTime:0.0107s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000404s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000429s ]
+
+[ 2017-04-18T09:20:10+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000449s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000781s ]
+SQL: SHOW COLUMNS FROM `wx_ordertake_range` [ RunTime:0.0135s ]
+SQL: SELECT `id`,`name` FROM `wx_ordertake_range` WHERE `type` = 'wx'  [ RunTime:0.0118s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000438s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000466s ]
+
+[ 2017-04-18T09:20:10+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000515s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000902s ]
+SQL: SHOW COLUMNS FROM `tg_weixin` [ RunTime:0.0144s ]
+SQL: SELECT DISTINCT  `city` FROM `tg_weixin` WHERE ( city!='0' and city!='' )  [ RunTime:0.0583s ]
+NOTIC: [2] Missing argument 3 for Home\Controller\IndexController::Json(), called in /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php on line 1048 and defined /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 1060 行.
+NOTIC: [8] Undefined variable: arr /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 1061 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000414s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000440s ]
+
+[ 2017-04-18T09:20:10+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000422s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000681s ]
+SQL: SHOW COLUMNS FROM `tg_weixin` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `tg_weixin` WHERE `is_del` = 0 ORDER BY id desc LIMIT 0,20   [ RunTime:0.0304s ]
+SQL: SELECT `id` FROM `tg_weixin` WHERE `is_del` = 0  [ RunTime:0.0068s ]
+SQL: SHOW COLUMNS FROM `wx_weixin_type` [ RunTime:0.0078s ]
+SQL: SELECT * FROM `wx_weixin_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0077s ]
+SQL: SHOW COLUMNS FROM `wx_media_type` [ RunTime:0.0083s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0071s ]
+SQL: SELECT * FROM `wx_weixin_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0076s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0086s ]
+SQL: SELECT * FROM `wx_weixin_type` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0071s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0075s ]
+SQL: SELECT * FROM `wx_weixin_type` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0085s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0069s ]
+SQL: SELECT * FROM `wx_weixin_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0132s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0102s ]
+SQL: SELECT * FROM `wx_weixin_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0088s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0108s ]
+SQL: SELECT * FROM `wx_weixin_type` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0123s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0087s ]
+SQL: SELECT * FROM `wx_weixin_type` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0120s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0075s ]
+SQL: SELECT * FROM `wx_weixin_type` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0083s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0108s ]
+SQL: SELECT * FROM `wx_weixin_type` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0116s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0095s ]
+SQL: SELECT * FROM `wx_weixin_type` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0148s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0073s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0077s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000516s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000566s ]
+
+[ 2017-04-18T09:20:34+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000379s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000661s ]
+SQL: SHOW COLUMNS FROM `wx_media_type` [ RunTime:0.0180s ]
+SQL: SELECT `id`,`name` FROM `wx_media_type`  [ RunTime:0.0109s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000664s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000736s ]
+
+[ 2017-04-18T09:20:34+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000405s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000709s ]
+SQL: SHOW COLUMNS FROM `wx_weixin_type` [ RunTime:0.0134s ]
+SQL: SELECT `id`,`name` FROM `wx_weixin_type` WHERE `type` = 'wb'  [ RunTime:0.0135s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000456s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000482s ]
+
+[ 2017-04-18T09:20:34+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000433s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000716s ]
+SQL: SHOW COLUMNS FROM `tg_weibo` [ RunTime:0.0144s ]
+SQL: SELECT DISTINCT  `city` FROM `tg_weibo` WHERE ( city!='0' and city!='' )  [ RunTime:0.0178s ]
+NOTIC: [2] Missing argument 3 for Home\Controller\IndexController::Json(), called in /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php on line 1048 and defined /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 1060 行.
+NOTIC: [8] Undefined variable: arr /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 1061 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000390s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000412s ]
+
+[ 2017-04-18T09:20:34+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000415s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000716s ]
+SQL: SHOW COLUMNS FROM `wx_ordertake_range` [ RunTime:0.0111s ]
+SQL: SELECT `id`,`name` FROM `wx_ordertake_range` WHERE `type` = 'wb'  [ RunTime:0.0095s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000672s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000719s ]
+
+[ 2017-04-18T09:20:34+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000267s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000485s ]
+SQL: SHOW COLUMNS FROM `tg_weibo` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `tg_weibo` WHERE `is_del` = 0 ORDER BY id desc LIMIT 0,20   [ RunTime:0.0102s ]
+SQL: SELECT `id` FROM `tg_weibo` WHERE `is_del` = 0  [ RunTime:0.0121s ]
+SQL: SHOW COLUMNS FROM `wx_weixin_type` [ RunTime:0.0101s ]
+SQL: SELECT * FROM `wx_weixin_type` WHERE `id` = 11 LIMIT 1   [ RunTime:0.0123s ]
+SQL: SHOW COLUMNS FROM `wx_media_type` [ RunTime:0.0121s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0124s ]
+NOTIC: [8] Undefined index: ordertake_range_id /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 498 行.
+SQL: SELECT * FROM `wx_weixin_type` WHERE `id` = 11 LIMIT 1   [ RunTime:0.0152s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0103s ]
+NOTIC: [8] Undefined index: ordertake_range_id /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 498 行.
+SQL: SELECT * FROM `wx_weixin_type` WHERE `id` = 11 LIMIT 1   [ RunTime:0.0213s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0105s ]
+NOTIC: [8] Undefined index: ordertake_range_id /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 498 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000457s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000503s ]
+
+[ 2017-04-18T09:20:40+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000269s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000465s ]
+SQL: SHOW COLUMNS FROM `tg_app` [ RunTime:0.0106s ]
+SQL: UPDATE `tg_app` SET `download_price`='100',`download_add`='1.0' WHERE ( id=3 ) [ RunTime:0.0154s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000507s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000558s ]
+
+[ 2017-04-18T09:20:44+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000493s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000923s ]
+SQL: SHOW COLUMNS FROM `tg_app` [ RunTime:0.0186s ]
+SQL: SELECT * FROM `tg_app` WHERE `is_del` = 0 ORDER BY id desc LIMIT 0,20   [ RunTime:0.0118s ]
+SQL: SELECT `id` FROM `tg_app` WHERE `is_del` = 0  [ RunTime:0.0289s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000421s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000455s ]
+
+[ 2017-04-18T09:20:45+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000384s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000669s ]
+SQL: SHOW COLUMNS FROM `wx_media_type` [ RunTime:0.0104s ]
+SQL: SELECT `id`,`name` FROM `wx_media_type`  [ RunTime:0.0104s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000578s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000630s ]
+
+[ 2017-04-18T09:20:45+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000409s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000710s ]
+SQL: SHOW COLUMNS FROM `tg_news` [ RunTime:0.0160s ]
+SQL: SELECT DISTINCT  `city` FROM `tg_news` WHERE ( city!='0' and city!='' )  [ RunTime:0.0145s ]
+NOTIC: [2] Missing argument 3 for Home\Controller\IndexController::Json(), called in /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php on line 1048 and defined /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 1060 行.
+NOTIC: [8] Undefined variable: arr /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 1061 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000533s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000569s ]
+
+[ 2017-04-18T09:20:45+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000400s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000731s ]
+SQL: SHOW COLUMNS FROM `tg_news` [ RunTime:0.0106s ]
+SQL: SELECT * FROM `tg_news` WHERE `is_del` = 0 ORDER BY id desc LIMIT 0,20   [ RunTime:0.0132s ]
+SQL: SELECT `id` FROM `tg_news` WHERE `is_del` = 0  [ RunTime:0.0124s ]
+SQL: SHOW COLUMNS FROM `wx_media_type` [ RunTime:0.0092s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0155s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0112s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0207s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0110s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0077s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000485s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000519s ]
+
+[ 2017-04-18T09:20:48+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000360s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000664s ]
+SQL: SHOW COLUMNS FROM `tg_app` [ RunTime:0.0131s ]
+SQL: SELECT * FROM `tg_app` WHERE `is_del` = 0 ORDER BY id desc LIMIT 0,20   [ RunTime:0.0086s ]
+SQL: SELECT `id` FROM `tg_app` WHERE `is_del` = 0  [ RunTime:0.0100s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000680s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000733s ]
+
+[ 2017-04-18T09:20:49+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000579s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000951s ]
+SQL: SHOW COLUMNS FROM `wx_weixin_type` [ RunTime:0.0127s ]
+SQL: SELECT `id`,`name` FROM `wx_weixin_type` WHERE `type` = 'wb'  [ RunTime:0.0114s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000933s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-04-18T09:20:49+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000405s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000726s ]
+SQL: SHOW COLUMNS FROM `wx_media_type` [ RunTime:0.0121s ]
+SQL: SELECT `id`,`name` FROM `wx_media_type`  [ RunTime:0.0091s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000552s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000592s ]
+
+[ 2017-04-18T09:20:49+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000419s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000729s ]
+SQL: SHOW COLUMNS FROM `wx_ordertake_range` [ RunTime:0.0109s ]
+SQL: SELECT `id`,`name` FROM `wx_ordertake_range` WHERE `type` = 'wb'  [ RunTime:0.0106s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000426s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000450s ]
+
+[ 2017-04-18T09:20:49+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000642s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001116s ]
+SQL: SHOW COLUMNS FROM `tg_weibo` [ RunTime:0.0110s ]
+SQL: SELECT DISTINCT  `city` FROM `tg_weibo` WHERE ( city!='0' and city!='' )  [ RunTime:0.0144s ]
+NOTIC: [2] Missing argument 3 for Home\Controller\IndexController::Json(), called in /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php on line 1048 and defined /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 1060 行.
+NOTIC: [8] Undefined variable: arr /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 1061 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000670s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000734s ]
+
+[ 2017-04-18T09:20:49+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000253s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000445s ]
+SQL: SHOW COLUMNS FROM `tg_weibo` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `tg_weibo` WHERE `is_del` = 0 ORDER BY id desc LIMIT 0,20   [ RunTime:0.0124s ]
+SQL: SELECT `id` FROM `tg_weibo` WHERE `is_del` = 0  [ RunTime:0.0127s ]
+SQL: SHOW COLUMNS FROM `wx_weixin_type` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `wx_weixin_type` WHERE `id` = 11 LIMIT 1   [ RunTime:0.0140s ]
+SQL: SHOW COLUMNS FROM `wx_media_type` [ RunTime:0.0099s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0115s ]
+NOTIC: [8] Undefined index: ordertake_range_id /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 498 行.
+SQL: SELECT * FROM `wx_weixin_type` WHERE `id` = 11 LIMIT 1   [ RunTime:0.0141s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0121s ]
+NOTIC: [8] Undefined index: ordertake_range_id /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 498 行.
+SQL: SELECT * FROM `wx_weixin_type` WHERE `id` = 11 LIMIT 1   [ RunTime:0.0126s ]
+SQL: SELECT * FROM `wx_media_type` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0129s ]
+NOTIC: [8] Undefined index: ordertake_range_id /Applications/XAMPP/xamppfiles/htdocs/media/api/index/Home/Controller/IndexController.class.php 第 498 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000381s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000408s ]
+
+[ 2017-04-18T09:20:51+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000431s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000778s ]
+SQL: SHOW COLUMNS FROM `wx_weixin_type` [ RunTime:0.0085s ]
+SQL: SELECT `id`,`name` FROM `wx_weixin_type` WHERE `type` = 'wb'  [ RunTime:0.0104s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000963s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001037s ]
+
+[ 2017-04-18T09:20:51+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000394s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000687s ]
+SQL: SHOW COLUMNS FROM `wx_media_type` [ RunTime:0.0121s ]
+SQL: SELECT `id`,`name` FROM `wx_media_type`  [ RunTime:0.0172s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000436s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000469s ]
+
+[ 2017-04-18T09:20:51+08:00 ] ::1 /media/api/index.php
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000687s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001021s ]
+SQL: SHOW COLUMNS FROM `wx_ordertake_range` [ RunTime:0.0104s ]
+SQL: SELECT `id`,`name` FROM `wx_ordertake_range` WHERE `type` = 'wb'  [ RunTime:0.0116s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000598s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000642s ]
+

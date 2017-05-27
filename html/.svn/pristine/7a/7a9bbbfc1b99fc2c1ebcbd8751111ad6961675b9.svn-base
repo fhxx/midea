@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="hui/lib/html5shiv.js"></script>
+		<script type="text/javascript" src="hui/lib/respond.min.js"></script>
+		<![endif]-->
+		<link rel="stylesheet" type="text/css" href="resources/static/h-ui/css/H-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="resources/lib/Hui-iconfont/1.0.8/iconfont.min.css" />
+		<link rel="stylesheet" type="text/css" href="resources/static/h-ui/css/app.css?od=11211" />
+		<link rel="stylesheet" type="text/css" href="resources/lib/icheck/icheck.css" />
+		<!--[if lt IE 9]>
+		<link href="hui/static/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css" />
+		<![endif]-->
+		<!--[if IE 6]>
+		<script type="text/javascript" src="hui/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+		<script>DD_belatedPNG.fix('*');</script>
+		<![endif]-->
+		<title>媒介资源后台管理系统</title>
+		<script type="text/javascript" src="resources/lib/jquery/1.9.1/jquery.min.js"></script> 
+		<script type="text/javascript" src="resources/lib/jquery/1.9.1/jquery.cookie.js"></script>
+		<script type="text/javascript" src="resources/static/h-ui/js/H-ui.min.js"></script>
+		<script type="text/javascript" src="resources/lib/layer/2.4/layer.js?id=123" ></script>
+		<script type="text/javascript" src="resources/static/h-ui/js/template.js" ></script>
+		<script type="text/javascript" src="resources/static/h-ui/js/app.js?id=111" ></script>
+		<script type="text/javascript" src="resources/static/h-ui/js/data.js?id=1121" ></script>
+		<script>
+			$(function(){$.cookie("username","1"); 
+				if($.cookie("username")=="null"){ window.location.href="login.html" }
+				else{
+				     $(".select-body").css({"min-height":($(document).height()-135)+"px"});
+					 $("#wx_save").unbind().bind("click",function(){
+                          $d.Addapp();
+					 });
+					 $("#wx_reset").unbind().bind("click",function(){
+					 	 $layer.confirm("确定要重置页面内容吗？",function(){
+                             $mc.goURL(window.location.href);
+					 	 })
+					 });
+					 $("#martname").change(function(){
+					 	  var value = $(this).val();
+					 	  if(value=="IOS"){
+                             $("#download_box").hide();
+					 	  }
+					 	  else $("#download_box").show();
+					 })
+					 
+				}
+			})
+		</script>
+	</head>
+	<body>
+	  <form id="from1" name="from1" method="post"> 
+	  <header>
+	  	 <div class="f-l l-box hl-50 "><span class="ml-20 f-18 c-fff">媒介资源后台管理系统</span></div>
+	  	 <div class="f-r r-box hl-50 mr-20">
+	  	 	<span class="f-16 c-fff user"><i class="Hui-iconfont">&#xe62c;</i>&nbsp;admin&nbsp;</span>
+	  	 	<div class="option-box pos-a">
+	  	 	  <ul>
+	  	 	  	 <li>
+	  	 	  	 	<div class="f-l l-box"><i class="Hui-iconfont">&#xe61d;</i></div>
+	  	 	  	 	<div class="f-l r-box">设置</div>
+	  	 	  	 </li>
+	  	 	  	  <li>
+	  	 	  	 	<div class="f-l l-box"><i class="Hui-iconfont">&#xe644;</i></div>
+	  	 	  	 	<div class="f-l r-box">退出</div>
+	  	 	  	 </li>
+	  	 	  </ul>
+	  	 	</div>
+	  	 </div>
+	  </header>
+	  <section class="w100 f-l mt-50 art-body">
+	  	<div class="col-sm-3 col-lg-2 pos-f left bg-fff">
+	  	   <ul>
+	  	   	  <li><a href="wxlist.html"><i class="Hui-iconfont">&#xe681;</i>微信公众号推广</a></li>
+	  	   	  <li><a href="wblist.html"><i class="Hui-iconfont">&#xe681;</i>微博推广</a></li>
+	  	   	  <li  class="active"><a><i class="Hui-iconfont">&#xe681;</i>APP推广</a></li>
+	  	   	  <li><a><i class="Hui-iconfont">&#xe681;</i>新闻营销</a></li>
+	  	   	  <li><a><i class="Hui-iconfont">&#xe681;</i>腾讯社交类广告</a></li>
+	  	   </ul>
+	  	</div>
+	  	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 right mb-30">
+	  	  <nav class="w100 f-l">
+	  	    <span class="ml-15 f-l"><i class="Hui-iconfont">&#xe67f;</i> / <a href="applist.html">APP推广</a> / 添加APP</span>
+            <span class="mr-15 f-r"><a href="wblist.html"   class="btn btn-default radius" style="line-height: 18px">返回&nbsp;<i class="Hui-iconfont pos-r" style="color:#333; top:0px">&#xe66b;</i></a></span>
+	  	  </nav>
+	  	  <div class="w96 ml2-0 mt-10 f-l">
+	  	  	 <div class="w100 f-l radius select-body">
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box"><font>*</font>市场类型：</div>
+	  	  	 	 	 <div class="flex r-box">
+	  	  	 	 	 	<span class="select-box radius add-input-box">						  
+						  <select class="select" size="1" id="martname">
+						      <option value="Android">Android</option>
+						      <option value="IOS">IOS</option>
+						      <option value="WIN">WIN</option>
+						  </select>
+						</span>
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box"><font>*</font>市场名称：</div>
+	  	  	 	 	 <div class="flex r-box">	  	  	 	 	 	
+						  <input type="text" id="appname" class="input-text radius size-M w-300" />
+						  <span class="c-999">注：app名称在15字以内</span>
+	  	  	 	 	 </div>
+	  	  	 	 </div>	  	  	 	
+	  	  	 	 
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box"><font>*</font>评论报价：</div>
+	  	  	 	 	 <div class="flex r-box">
+	  	  	 	 	 	报价：<input type="text" id="comment_price" class="input-text radius size-M w-80" value="0"/>&nbsp;
+	  	  	 	 	 	增价指数：<input type="text" id=comment_add class="input-text radius size-M w-80" value="1.0"/>&nbsp;&nbsp;&nbsp;
+	  	  	 	 	 	
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+
+	  	  	 	  <div class="w100 h-50 hl-50 box input-box" id="download_box">
+	  	  	 	 	 <div class="ml-10 l-box"><font>*</font>下载报价：</div>
+	  	  	 	 	 <div class="flex r-box">
+	  	  	 	 	 	报价：<input type="text" id="download_price" class="input-text radius size-M w-80" value="0"/>&nbsp;
+	  	  	 	 	 	增价指数：<input type="text" id="download_add" class="input-text radius size-M w-80" value="1.0"/>
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 
+	  	  	 	
+	  	  	 	 <div class="w100 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box">备注：</div>
+	  	  	 	 	 <div class="flex r-box">	  	  	 	 	 	
+						 <input type="text" id="memo" class="input-text radius size-M w-300" />
+						 <span class="c-red ml-10">0/70</span><span class="text-info c-999 ml-10">注：限70字以内</span>
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 
+	  	  	 	 
+	  	  	 	 
+	  	  	 	
+	  	  	 	 <div class="w100 mb-30 h-50 hl-50 box input-box">
+	  	  	 	 	 <div class="ml-10 l-box">&nbsp;</div>
+	  	  	 	 	 <div class="flex r-box">
+	  	  	 	 	 	<a class="btn btn-primary radius" id="wx_save"><i class="Hui-iconfont">&#xe632;</i>&nbsp;保存</a>
+	  	  	 	 	 	<a class="btn  btn-danger radius" id="wx_reset"><i class="Hui-iconfont">&#xe66c;</i>&nbsp;重置</a>
+	  	  	 	 	 </div>
+	  	  	 	 </div>
+	  	  	 	 
+	  	  	 </div>
+	  	  </div>
+	  	  
+	  	</div>
+	  </section>
+	  </form>
+	</body>
+</html>
+

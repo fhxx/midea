@@ -1,0 +1,24 @@
+<?php
+namespace Home\Controller;
+use Think\Controller;
+class UpimgController extends Controller {
+
+	   public function index(){
+	   	    /*$res["error"] = "";//错误信息
+			$res["msg"] = "";//提示信息
+			if(move_uploaded_file($_FILES['file1']['tmp_name'],"D:\\test.jpg")){
+			    $res["msg"] = "ok";
+			}else{
+			    $res["error"] = "error";
+			}
+			echo json_encode($res);*/
+			$upFilePath = "/attachment/";
+			$ok= @move_uploaded_file($_FILES['file1']['tmp_name'],$upFilePath);
+			//echo $_FILES['file1'];
+			 if($ok === FALSE){
+			    echo json_encode('file_infor'=>'上传失败');
+			 }else{
+			    echo json_encode('file_infor'=>'上传成功');}
+	   }
+
+}

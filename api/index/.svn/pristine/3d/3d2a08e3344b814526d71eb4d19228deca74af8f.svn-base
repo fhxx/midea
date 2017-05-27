@@ -1,0 +1,32 @@
+<?php
+namespace Home\Controller;
+use Think\Controller;
+class UpimgController extends Controller {
+
+	   public function index(){	   	    
+            if(!empty($_FILES)){
+            	 $config = array('rootPath' => './index/', 'savePath' => 'upload/');
+            	 $upload = new \Think\Upload($config);
+            	 $z = $upload -> uploadOne($_FILES['file_0']);
+            	 if($z){
+            	 	 echo $z['savepath'].$z["savename"];
+            	 }
+            	 else echo "失败";
+             }
+
+	   }
+
+	   public function ExcelImport(){
+            
+	   }
+
+	  public function Log($str){
+	      $path = date("Ymd").".log";
+	      if (!file_exists($path)){
+	          fopen($path, "w");   
+	      }
+	      file_put_contents($path, $str."\r\n",FILE_APPEND);
+     
+     }
+
+}

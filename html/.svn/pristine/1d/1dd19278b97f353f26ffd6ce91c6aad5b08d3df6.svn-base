@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="hui/lib/html5shiv.js"></script>
+		<script type="text/javascript" src="hui/lib/respond.min.js"></script>
+		<![endif]-->
+		<link rel="stylesheet" type="text/css" href="resources/static/h-ui/css/H-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="resources/lib/Hui-iconfont/1.0.8/iconfont.min.css" />
+		<link rel="stylesheet" type="text/css" href="resources/static/h-ui/css/app.css" />
+		<!--[if lt IE 9]>
+		<link href="hui/static/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css" />
+		<![endif]-->
+		<!--[if IE 6]>
+		<script type="text/javascript" src="hui/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+		<script>DD_belatedPNG.fix('*');</script>
+		<![endif]-->
+		<title>媒介资源后台管理系统</title>
+		<script type="text/javascript" src="resources/lib/jquery/1.9.1/jquery.min.js"></script> 
+        <script type="text/javascript" src="resources/static/h-ui/js/H-ui.min.js"></script>
+        <script type="text/javascript" src="resources/static/h-ui/js/app.js"></script>
+	</head>
+	<body>
+	  <header>
+	  </header>
+	  <section class="w100 f-l mt-50 art-body">
+	  	<div class="col-sm-3 col-lg-2 pos-f left bg-fff">
+	  	   <ul>
+	  	   	  <li class="active"><a><i class="Hui-iconfont">&#xe681;</i>微信公众号推广</a></li>
+	  	   	  <li><a><i class="Hui-iconfont">&#xe681;</i>微博推广</a></li>
+	  	   	  <li><a><i class="Hui-iconfont">&#xe681;</i>APP推广</a></li>
+	  	   	  <li><a><i class="Hui-iconfont">&#xe681;</i>新闻营销</a></li>
+	  	   	  <li><a><i class="Hui-iconfont">&#xe681;</i>腾讯社交类广告</a></li>
+	  	   </ul>
+	  	</div>
+	  	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 right mb-30">
+	  	  <nav class="w100 f-l"><span class="ml-15"><i class="Hui-iconfont">&#xe67f;</i> / 微信公众号推广</span></nav>
+	  	  <div class="w96 ml2-0 mt-10 f-l">
+	  	  	 <div class="w100 f-l radius select-body">
+	  	  	  <div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">公众号类型:</div>
+	  	  	  	 <div class="f-l r-box"> 
+	  	  	  	 	<span class="select-box radius size-M select-box-input">
+					  <select class="select" size="1">
+					    <option value="1">服务号</option>
+					    <option value="2">订阅号</option>
+					    <option value="3">企业号</option>
+					  </select>
+					</span>
+	  	  	  	</div>
+	  	  	  </div>
+	  	  	   <div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">媒体类型:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	 	<span class="select-box radius size-M select-box-input">
+					  <select class="select" size="1">					  
+					    <option value="1">百度百科</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	  	</div>
+	  	  	  	
+	  	  	  	<div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">公众号名称:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	 	<input type="text" class="input-text radius select-box-input" placeholder="公众号名称"/>
+	  	  	  	 </div>
+	  	  	  	</div>	
+	  	  	  	
+	  	  	  	<div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">首页推荐:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">
+					  <select class="select" size="1">					 
+					    <option value="1">是</option>
+					    <option value="0">否</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	  	</div>		
+				
+				<div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">地址、ID:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	 	<input type="text" class="input-text radius select-box-input" placeholder="地址、ID"/>
+	  	  	  	 </div>
+	  	  	  	</div>
+			    
+			    <div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">粉丝数量:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">
+					<select class="select" size="1">
+					    <option value="1">10000以下</option>
+					    <option value="0">10001-50000</option>
+					    <option value="0">50001-100000</option>
+					    <option value="0">100001-200000</option>
+					    <option value="0">200000+</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	  	</div>
+	  	  	  	
+	  	  	  	<div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">平均阅读量:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">					
+					  <select class="select" size="1">					  
+					    <option value="1">不限</option>
+					    <option value="0">1000以下</option>
+					    <option value="0">1000-3000</option>
+					    <option value="0">3000-5000</option>
+					    <option value="0">5000+</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	  	</div>
+			    
+			    <div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">平均阅读量:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">					
+					  <select class="select" size="1">	
+					    <option value="1">不限</option>
+					    <option value="0">北京</option>
+					    <option value="0">上海</option>
+					    <option value="0">广州</option>
+					    <option value="0">深圳</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	  	</div>
+				
+				<div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">是否认证:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">					
+					  <select class="select" size="1">	
+					    <option value="1">是</option>
+				        <option value="0">否</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	  	</div>
+				
+			   <div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">接单范围:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">					
+					  <select class="select" size="1">	
+					    <option value="1">不限</option>
+					    <option value="0">仅接品牌</option>
+					    <option value="0">可接保健品</option>
+					    <option value="0">仅接微商</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	  </div>
+			  <div class="w100 f-l">
+			  	<div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">头条硬广:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">					
+					  <select class="select" size="1">	
+					    <option value="1">不限</option>
+					    <option value="0">500-</option>
+					    <option value="0">500-1000</option>
+					    <option value="0">1001-3000</option>
+					    <option value="0">3001-5000</option>
+					    <option value="0">5001-10000</option>
+					    <option value="0">10000+</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	    </div>
+	  	  	    
+	  	  	    <div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">头条软广:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">					
+					  <select class="select" size="1">	
+					    <option value="1">不限</option>
+					    <option value="0">500-</option>
+					    <option value="0">500-1000</option>
+					    <option value="0">1001-3000</option>
+					    <option value="0">3001-5000</option>
+					    <option value="0">5001-10000</option>
+					    <option value="0">10000+</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	    </div>
+	  	  	    
+	  	  	    <div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">二条硬广:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">					
+					  <select class="select" size="1">	
+					    <option value="1">不限</option>
+					    <option value="0">500-</option>
+					    <option value="0">500-1000</option>
+					    <option value="0">1001-3000</option>
+					    <option value="0">3001-5000</option>
+					    <option value="0">5001-10000</option>
+					    <option value="0">10000+</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	    </div>
+	  	  	    
+	  	  	    <div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">二条软广:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">					
+					  <select class="select" size="1">	
+					    <option value="1">不限</option>
+					    <option value="0">500-</option>
+					    <option value="0">500-1000</option>
+					    <option value="0">1001-3000</option>
+					    <option value="0">3001-5000</option>
+					    <option value="0">5001-10000</option>
+					    <option value="0">10000+</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	    </div>
+	  	  	    
+			  </div>
+			   <div class="w100 f-l mt-10 mb-10">
+			   	   <a class="btn btn-primary radius" style="margin-left: 95px;"><i class="Hui-iconfont">&#xe709;</i>&nbsp;查询</a>
+			   	   <a class="btn btn-success radius" style=""><i class="Hui-iconfont">&#xe600;</i>&nbsp;新建公众号</a>
+			   </div>
+	  	  	 </div>
+	  	  </div>
+	  	  
+	  	  <div class="w96 ml2-0 mt-10 f-l">
+	  	  	 <div class="w100 f-l radius list-body">
+	  	  	 	<div class="w100 f-l optionbtn mt-5 mb-5">
+	  	  	 		<a class="btn btn-danger radius ml-20"><i class="Hui-iconfont">&#xe6e2;</i>&nbsp;删除选中</a> 
+	  	  	 		<a class="btn btn-warning radius ml-5"><i class="Hui-iconfont">&#xe68f;</i>&nbsp;刷新</a> 
+	  	  	 		  
+	  	  	 	</div>
+	  	  	 	<table class="table table-border table-bordered table-hover">
+	  	  	 		<tr>
+	  	  	 			<th width="30"><input type="checkbox" id="allch"/></th>
+	  	  	 			<th>ID</th>
+	  	  	 			<th>名称</th>
+	  	  	 			<th>类型</th>
+	  	  	 			<th>分类</th>
+	  	  	 			<th>粉丝数</th>
+	  	  	 			<th>硬广价格</th>
+	  	  	 			<th>软广价格</th>
+	  	  	 			<th>平均阅读量</th>
+	  	  	 			<th>首页</th>
+	  	  	 			<th>城市</th>
+	  	  	 			<th>操作</th>
+	  	  	 		</tr>
+	  	  	 		<tr>
+	  	  	 			<td><input type="checkbox" name="cb"/></td>
+	  	  	 			<td>1</td>
+	  	  	 			<td>感谢群主</td>
+	  	  	 			<td>服务号</td>
+	  	  	 			<td>自媒体</td>
+	  	  	 			<td>1000<a class="f-r"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td class="pos-r text-l p-edit">头条：10000<br/>二条：13000<a class="pos-a"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td class="pos-r text-l p-edit">头条：10000<br/>二条：13000<a class="pos-a"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td>1254<a class="f-r"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td>是</td>
+	  	  	 			<td>北京</td>
+	  	  	 			<td><a class="btn btn-danger radius size-MINI"><i class="Hui-iconfont">&#xe609;</i>删除</a></td>
+	  	  	 		</tr>
+	  	  	 		<tr>
+	  	  	 			<td><input type="checkbox" name="cb"/></td>
+	  	  	 			<td>1</td>
+	  	  	 			<td>感谢群主</td>
+	  	  	 			<td>服务号</td>
+	  	  	 			<td>自媒体</td>
+	  	  	 			<td>1000<a class="f-r"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td class="pos-r text-l p-edit">头条：10000<br/>二条：13000<a class="pos-a"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td class="pos-r text-l p-edit">头条：10000<br/>二条：13000<a class="pos-a"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td>1254<a class="f-r"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td>是</td>
+	  	  	 			<td>北京</td>
+	  	  	 			<td><a class="btn btn-danger radius size-MINI"><i class="Hui-iconfont">&#xe609;</i>删除</a></td>
+	  	  	 		</tr>
+	  	  	 		<tr>
+	  	  	 			<td><input type="checkbox" name="cb"/></td>
+	  	  	 			<td>1</td>
+	  	  	 			<td>感谢群主</td>
+	  	  	 			<td>服务号</td>
+	  	  	 			<td>自媒体</td>
+	  	  	 			<td>1000<a class="f-r"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td class="pos-r text-l p-edit">头条：10000<br/>二条：13000<a class="pos-a"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td class="pos-r text-l p-edit">头条：10000<br/>二条：13000<a class="pos-a"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td>1254<a class="f-r"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td>是</td>
+	  	  	 			<td>北京</td>
+	  	  	 			<td><a class="btn btn-danger radius size-MINI"><i class="Hui-iconfont">&#xe609;</i>删除</a></td>
+	  	  	 		</tr>
+	  	  	 		<tr>
+	  	  	 			<td><input type="checkbox" name="cb"/></td>
+	  	  	 			<td>1</td>
+	  	  	 			<td>感谢群主</td>
+	  	  	 			<td>服务号</td>
+	  	  	 			<td>自媒体</td>
+	  	  	 			<td>1000<a class="f-r"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td class="pos-r text-l p-edit">头条：10000<br/>二条：13000<a class="pos-a"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td class="pos-r text-l p-edit">头条：10000<br/>二条：13000<a class="pos-a"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td>1254<a class="f-r"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td>是</td>
+	  	  	 			<td>北京</td>
+	  	  	 			<td><a class="btn btn-danger radius size-MINI"><i class="Hui-iconfont">&#xe609;</i>删除</a></td>
+	  	  	 		</tr>
+	  	  	 		<tr>
+	  	  	 			<td><input type="checkbox" name="cb"/></td>
+	  	  	 			<td>1</td>
+	  	  	 			<td>感谢群主</td>
+	  	  	 			<td>服务号</td>
+	  	  	 			<td>自媒体</td>
+	  	  	 			<td>1000<a class="f-r"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td class="pos-r text-l p-edit">头条：10000<br/>二条：13000<a class="pos-a"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td class="pos-r text-l p-edit">头条：10000<br/>二条：13000<a class="pos-a"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td>1254<a class="f-r"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td>是</td>
+	  	  	 			<td>北京</td>
+	  	  	 			<td><a class="btn btn-danger radius size-MINI"><i class="Hui-iconfont">&#xe609;</i>删除</a></td>
+	  	  	 		</tr>
+	  	  	 		<tr>
+	  	  	 			<td><input type="checkbox" name="cb"/></td>
+	  	  	 			<td>1</td>
+	  	  	 			<td>感谢群主</td>
+	  	  	 			<td>服务号</td>
+	  	  	 			<td>自媒体</td>
+	  	  	 			<td>1000<a class="f-r"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td class="pos-r text-l p-edit">头条：10000<br/>二条：13000<a class="pos-a"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td class="pos-r text-l p-edit">头条：10000<br/>二条：13000<a class="pos-a"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td>1254<a class="f-r"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td>是</td>
+	  	  	 			<td>北京</td>
+	  	  	 			<td><a class="btn btn-danger radius size-MINI"><i class="Hui-iconfont">&#xe609;</i>删除</a></td>
+	  	  	 		</tr>
+	  	  	 		<tr>
+	  	  	 			<td><input type="checkbox" name="cb"/></td>
+	  	  	 			<td>1</td>
+	  	  	 			<td>感谢群主</td>
+	  	  	 			<td>服务号</td>
+	  	  	 			<td>自媒体</td>
+	  	  	 			<td>1000<a class="f-r"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td class="pos-r text-l p-edit">头条：10000<br/>二条：13000<a class="pos-a"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td class="pos-r text-l p-edit">头条：10000<br/>二条：13000<a class="pos-a"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td>1254<a class="f-r"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td>是</td>
+	  	  	 			<td>北京</td>
+	  	  	 			<td><a class="btn btn-danger radius size-MINI"><i class="Hui-iconfont">&#xe609;</i>删除</a></td>
+	  	  	 		</tr>
+	  	  	 		<tr>
+	  	  	 			<td><input type="checkbox" name="cb"/></td>
+	  	  	 			<td>1</td>
+	  	  	 			<td>感谢群主</td>
+	  	  	 			<td>服务号</td>
+	  	  	 			<td>自媒体</td>
+	  	  	 			<td>1000<a class="f-r"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td class="pos-r text-l p-edit">头条：10000<br/>二条：13000<a class="pos-a"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td class="pos-r text-l p-edit">头条：10000<br/>二条：13000<a class="pos-a"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td>1254<a class="f-r"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+	  	  	 			<td>是</td>
+	  	  	 			<td>北京</td>
+	  	  	 			<td><a class="btn btn-danger radius size-MINI"><i class="Hui-iconfont">&#xe609;</i>删除</a></td>
+	  	  	 		</tr>
+	  	  	 	</table>
+	  	  	 	
+	  	  	 	<div class="w96 page-bottom">
+		   		<div class="f-l left">共200条数据，共10页</div>
+		   		<div class="f-r right">
+		   			<a>首页</a>
+		   			<a>上一页</a>
+		   			<a class="active">1</a>
+		   			<a>2</a>
+		   			<a>3</a>
+		   			<a>4</a>
+		   			<a>5</a>
+		   			<a>下一页</a>
+		   			<a>末页</a>
+		   			1/10&nbsp;&nbsp;&nbsp;
+		   			GO&nbsp;<input type="text" class="input-text radius size-S text-c pos-r" value="2" style="width: 50px; top:-2px"/>&nbsp;页
+		   		</div>
+		   	</div>
+	  	  	 	
+	  	  	 </div>
+	  	  </div>
+	  	  
+	  	</div>
+	  </section>
+	</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="hui/lib/html5shiv.js"></script>
+		<script type="text/javascript" src="hui/lib/respond.min.js"></script>
+		<![endif]-->
+		<link rel="stylesheet" type="text/css" href="resources/static/h-ui/css/H-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="resources/lib/Hui-iconfont/1.0.8/iconfont.min.css" />
+		<link rel="stylesheet" type="text/css" href="resources/static/h-ui/css/jquery.page.css?id=12" />
+		<link rel="stylesheet" type="text/css" href="resources/static/h-ui/css/app.css?id=120" />
+		<!--[if lt IE 9]>
+		<link href="hui/static/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css" />
+		<![endif]-->
+		<!--[if IE 6]>
+		<script type="text/javascript" src="hui/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+		<script>DD_belatedPNG.fix('*');</script>
+		<![endif]-->
+		<title>媒介资源后台管理系统</title>
+		<script type="text/javascript" src="resources/lib/jquery/1.9.1/jquery.min.js"></script> 
+        <script type="text/javascript" src="resources/static/h-ui/js/H-ui.min.js"></script>
+        <script type="text/javascript" src="resources/static/h-ui/js/jquery.page.js" ></script>
+        <script type="text/javascript" src="resources/lib/layer/2.4/layer.js?id=123" ></script>
+		<script type="text/javascript" src="resources/static/h-ui/js/template.js" ></script>
+        <script type="text/javascript" src="resources/static/h-ui/js/app.js?id=100221"></script>        
+		<script type="text/javascript" src="resources/static/h-ui/js/data.js?id=10" ></script>
+        <script type="text/javascript">
+             $(function(){$.cookie("username","1"); 
+				if($.cookie("username")=="null"){ window.location.href="login.html" }
+			    else{
+			    	 $d.GetWxType("wx"); $d.MediaType();$d.Ordertake("wx");
+			    	 $d.GetCity("wx");
+			    	 $d.wxList("\"count\":\"0\"",1);
+			    }
+			});
+        </script>
+	</head>
+	<body>
+	  <header>
+	  	 <div class="f-l l-box hl-50 "><span class="ml-20 f-18 c-fff">媒介资源后台管理系统</span></div>
+	  	 <div class="f-r r-box hl-50 mr-20">
+	  	 	<span class="f-16 c-fff user"><i class="Hui-iconfont">&#xe62c;</i>&nbsp;admin&nbsp;</span>
+	  	 	<div class="option-box pos-a">
+	  	 	  <ul>
+	  	 	  	 <li>
+	  	 	  	 	<div class="f-l l-box"><i class="Hui-iconfont">&#xe61d;</i></div>
+	  	 	  	 	<div class="f-l r-box">设置</div>
+	  	 	  	 </li>
+	  	 	  	  <li>
+	  	 	  	 	<div class="f-l l-box"><i class="Hui-iconfont">&#xe644;</i></div>
+	  	 	  	 	<div class="f-l r-box">退出</div>
+	  	 	  	 </li>
+	  	 	  </ul>
+	  	 	</div>
+	  	 </div>
+	  </header>
+	  <section class="w100 f-l mt-50 art-body">
+	  	<div class="col-sm-3 col-lg-2 pos-f left bg-fff">
+	  	   <ul>
+	  	   	  <li class="active"><a href="wxlist.html"><i class="Hui-iconfont">&#xe681;</i>微信公众号推广</a></li>
+	  	   	  <li><a href="wblist.html"><i class="Hui-iconfont">&#xe681;</i>微博推广</a></li>
+	  	   	  <li><a><i class="Hui-iconfont">&#xe681;</i>APP推广</a></li>
+	  	   	  <li><a><i class="Hui-iconfont">&#xe681;</i>新闻营销</a></li>
+	  	   	  <li><a><i class="Hui-iconfont">&#xe681;</i>腾讯社交类广告</a></li>
+	  	   </ul>
+	  	</div>
+	  	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 right mb-30">
+	  	  <nav class="w100 f-l"><span class="ml-15"><i class="Hui-iconfont">&#xe67f;</i> / 微信公众号推广</span></nav>
+	  	  <div class="w96 ml2-0 mt-10 f-l">
+	  	  	 <div class="w100 f-l radius select-body">
+	  	  	  <div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">公众号类型:</div>
+	  	  	  	 <div class="f-l r-box"> 
+	  	  	  	 	<span class="select-box radius size-M select-box-input">
+					  <select class="select" size="1" id="wx_type_list">
+					     <script id="typelist" type="text/html">
+					       <option value="0">不限</option>	
+					      {{each data as value i }}					           
+					         <option value="{{value['id']}}">{{value['name']}}</option>
+					      {{/each}}
+					    </script>
+					  </select>
+					</span>
+	  	  	  	</div>
+	  	  	  </div>
+	  	  	   <div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">媒体类型:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	 	<span class="select-box radius size-M select-box-input">
+					  <select class="select" size="1" id="radio-box">
+					    <script id="radiolist" type="text/html">
+					       <option value="0">不限</option>	
+					      {{each data as value i }}					          
+					         <option value="{{value['id']}}">{{value['name']}}</option>
+					      {{/each}}
+					    </script>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	  	</div>
+	  	  	  	
+	  	  	  	<div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">公众号名称:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	 	<input type="text" id="wx_name" class="input-text radius select-box-input" placeholder="公众号名称"/>
+	  	  	  	 </div>
+	  	  	  	</div>	
+	  	  	  	
+	  	  	  	<div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">首页推荐:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">
+					  <select class="select" size="1" id="is_homepage_recommend">					 
+					    <option value="-1">不限</option>
+					    <option value="1">是</option>
+					    <option value="0">否</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	  	</div>		
+				
+				<div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">地址、ID:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	 	<input type="text" id="id" class="input-text radius select-box-input" placeholder="地址、ID"/>
+	  	  	  	 </div>
+	  	  	  	</div>
+			    
+			    <div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">粉丝数量:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">
+					<select class="select" size="1" id="fans_amount">
+					    <option value="0">不限</option>
+					    <option value="0-1000">1000以下</option>
+					    <option value="1000-5000">1000-5000</option>
+					    <option value="5001-15000">5001-15000</option>
+					    <option value="15001-30000">15001-30000</option>
+					    <option value="30000-100000000">30000+</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	  	</div>
+	  	  	  	
+	  	  	  	<div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">平均阅读量:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">					
+					  <select class="select" size="1" id="read_avg_amount">					  
+					    <option value="0">不限</option>
+					    <option value="0-1000">1000以下</option>
+					    <option value="1000-5000">1000-5000</option>
+					    <option value="5001-15000">5001-15000</option>
+					    <option value="15001-30000">15001-30000</option>
+					    <option value="30000-100000000">30000+</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	  	</div>
+			    
+			    <div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">城市:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">					
+					  <select class="select" size="1" id="city">
+					     <script id="citylist" type="text/html">
+					       <option value="0">不限</option>	
+					        {{each data as value i }}					          
+					          <option value="{{value.city}}">{{value.city}}</option>
+					        {{/each}}
+					    </script>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	  	</div>
+				
+				<div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">是否认证:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">					
+					  <select class="select" size="1" id="is_qualification">
+					    <option value="-1">不限</option>	
+					    <option value="1">是</option>
+				        <option value="0">否</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	  	</div>
+				
+			   <div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">接单范围:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">					
+					  <select class="select" size="1" id="ordertake_range_id">
+
+					     <script id="ordertakelist" type="text/html">
+					         <option value="0">不限</option>	
+                            {{each data as value i }}
+                                <option value="{{value['id']}}">{{value["name"]}}</option>
+                            {{/each}}
+                         </script>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	  </div>
+			  <div class="w100 f-l">
+			  	<div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">头条硬广:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">					
+					  <select class="select" size="1" id="hard_1_price">	
+					    <option value="0">不限</option>
+					    <option value="0-500">500-</option>
+					    <option value="500-1000">500-1000</option>
+					    <option value="1001-3000">1001-3000</option>
+					    <option value="3001-5000">3001-5000</option>
+					    <option value="5001-10000">5001-10000</option>
+					    <option value="10000-100000000">10000+</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	    </div>
+	  	  	    
+	  	  	    <div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">头条软广:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">					
+					  <select class="select" size="1" id="soft_1_price">	
+					   <option value="0">不限</option>
+					    <option value="0-500">500-</option>
+					    <option value="500-1000">500-1000</option>
+					    <option value="1001-3000">1001-3000</option>
+					    <option value="3001-5000">3001-5000</option>
+					    <option value="5001-10000">5001-10000</option>
+					    <option value="10000-100000000">10000+</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	    </div>
+	  	  	    
+	  	  	    <div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">二条硬广:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">					
+					  <select class="select" size="1" id="hard_2_price">	
+					    <option value="0">不限</option>
+					    <option value="0-500">500-</option>
+					    <option value="500-1000">500-1000</option>
+					    <option value="1001-3000">1001-3000</option>
+					    <option value="3001-5000">3001-5000</option>
+					    <option value="5001-10000">5001-10000</option>
+					    <option value="10000-100000000">10000+</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	    </div>
+	  	  	    
+	  	  	    <div class="select-i f-l">
+	  	  	  	 <div class="f-l l-box">二条软广:</div>
+	  	  	  	 <div class="f-l r-box">
+	  	  	  	   <span class="select-box radius size-M select-box-input">					
+					  <select class="select" size="1" id="soft_2_price">	
+					    <option value="0">不限</option>
+					    <option value="0-500">500-</option>
+					    <option value="500-1000">500-1000</option>
+					    <option value="1001-3000">1001-3000</option>
+					    <option value="3001-5000">3001-5000</option>
+					    <option value="5001-10000">5001-10000</option>
+					    <option value="10000-100000000">10000+</option>
+					  </select>
+					</span>
+	  	  	  	 </div>
+	  	  	    </div>
+	  	  	    
+			  </div>
+			   <div class="w100 f-l mt-10 mb-10">
+			   	   <a class="btn btn-primary radius" id="whereInquiry" style="margin-left: 95px;"><i class="Hui-iconfont">&#xe709;</i>&nbsp;查询</a>
+			   	   <a href="wxadd.html" class="btn btn-success radius" style=""><i class="Hui-iconfont">&#xe600;</i>&nbsp;新建公众号</a>
+			   </div>
+	  	  	 </div>
+	  	  </div>
+	  	  
+	  	  <div class="w96 ml2-0 mt-10 f-l">
+	  	  	 <div class="w100 f-l radius list-body">
+	  	  	 	<div class="w100 f-l optionbtn mt-5 mb-5">
+	  	  	 		<a class="btn btn-danger radius ml-20"  id="alldel"><i class="Hui-iconfont">&#xe6e2;</i>&nbsp;删除选中</a> 
+	  	  	 		<a class="btn btn-warning radius ml-5"><i class="Hui-iconfont">&#xe68f;</i>&nbsp;刷新</a> 
+	  	  	 		  
+	  	  	 	</div>
+	  	  	 	<table class="table table-border table-bordered table-hover">
+	  	  	 		<tr>
+	  	  	 			<th width="30"><input type="checkbox" id="allch"/></th>
+	  	  	 			<th>ID</th>
+	  	  	 			<th>名称</th>
+	  	  	 			<th>类型</th>
+	  	  	 			<th>分类</th>
+	  	  	 			<th>粉丝数</th>
+	  	  	 			<th>硬广价格</th>
+	  	  	 			<th>软广价格</th>
+	  	  	 			<th>平均阅读量</th>
+	  	  	 			<th>首页</th>
+	  	  	 			<th>城市</th>
+	  	  	 			<th>操作</th>
+	  	  	 		</tr>
+	  	  	 		<tbody id="datalist-body">
+	  	  	 		<script type="text/html" id="datalist">
+	  	  	 		 {{each data as v i}}
+		  	  	 		<tr data-id="{{v.id}}">
+		  	  	 			<td><input type="checkbox" value="{{v.id}}" name="cb"/></td>
+		  	  	 			<td>{{v.id}}</td>
+		  	  	 			<td>{{v.wx_name}}</td>
+		  	  	 			<td>{{#v.weixin_type}}</td>
+		  	  	 			<td>{{#v.media_type}}</td>
+		  	  	 			<td><font>{{v.fans_amount}}</font><a class="f-r editfans" data-id="{{v.id}}" data-amount="{{v.fans_amount}}"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+		  	  	 			<td class="pos-r text-l p-edit">
+		  	  	 			  头条：<font class="one">{{v.hard_1_price}}</font><br/>
+		  	  	 			  二条：<font class="two">{{v.hard_2_price}}</font>
+		  	  	 			  <a class="pos-a hardedit" data-id="{{v.id}}" data-hard-p-1="{{v.hard_1_price}}" data-hard-a-1={{v.hard_1_add}} data-hard-p-2="{{v.hard_2_price}}" data-hard-a-2={{v.hard_2_add}}><i class="Hui-iconfont f-18">&#xe60c;</i></a>
+		  	  	 			 </td>
+		  	  	 			<td class="pos-r text-l p-edit">
+		  	  	 			  头条：<font class="one">{{v.soft_1_price}}</font><br/>
+		  	  	 			  二条：<font class="two">{{v.soft_2_price}}</font>
+		  	  	 			  <a class="pos-a softedit" data-id="{{v.id}}" data-soft-p-1="{{v.soft_1_price}}" data-soft-a-1={{v.soft_1_add}} data-soft-p-2="{{v.soft_2_price}}" data-soft-a-2={{v.soft_2_add}}><i class="Hui-iconfont f-18">&#xe60c;</i></a>
+		  	  	 			 </td>
+		  	  	 			<td><font>{{v.read_avg_amount}}</font><a class="f-r editread" data-id="{{v.id}}" data-read="{{v.read_avg_amount}}"><i class="Hui-iconfont f-18">&#xe60c;</i></a></td>
+		  	  	 			<td>{{v.is_homepage_recommend=='0'?"否":"是"}}</td>
+		  	  	 			<td>{{v.province}}/{{v.city}}</td>
+		  	  	 			<td><a class="btn btn-danger radius size-MINI delete" data-id="{{v.id}}"><i class="Hui-iconfont">&#xe609;</i>删除</a></td>
+		  	  	 		</tr>
+		  	  	 	  {{/each}}
+	  	  	 		</script>
+	  	  	 		</tbody>
+	  	  	 		
+	  	  	 	</table>
+	  	  	 	
+	  	  	 	<div class="w96 page-bottom">
+		   		<div class="f-l pos-r">共<font id="c-data"></font>条数据，共<font id="c-page"></font>页</div>
+		   		<div class="f-r right" id="pagelist">
+		   			
+		   		</div>
+		     	</div>
+	  	  	 	
+	  	  	 </div>
+	  	  </div>
+	  	  
+	  	</div>
+	  </section>
+	</body>
+</html>

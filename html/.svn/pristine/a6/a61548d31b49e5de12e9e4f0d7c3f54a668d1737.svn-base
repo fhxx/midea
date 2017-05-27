@@ -1,0 +1,120 @@
+$(function(){
+	
+	 $mc.autoHeight();
+	 $(".user").unbind().bind("click",function(){
+	 	 $mc.showUserOption();
+	 });
+	 $("#allch").unbind().bind("click",function(){	 	  
+	 	  $mc.AllCheckBox($(this).is(":checked"));
+	 })
+	 	$("#add_wx_type").unbind().bind("click",function(){
+			$datalayer.WxTypeAdd();
+		})
+})
+var $d={
+	 login:function(){	 	 	 
+	 	  var username = $("#username").val();
+	 	  var password = $("#userpwd").val();
+	 	  if(username.trim()=="您的用户名") username="";
+	 	  if(password.trim()=="******") password="";
+	 	  if(username=="") $layer.msg("请填入您的用户名");
+	 	  else if(password=="") $layer.msg("请填入您的密码");
+	 	  else{
+	 	  	  var isreme = $("#save_me").is(":checked");
+	 	  	  $data.Login(username,password,function(out){	 	  	  
+	 	  	  	  if(out.code==200){
+	 	  	  	  	 $.cookie("username",username);
+	 	  	  	  	 $mc.goURL("index.html");
+	 	  	  	  }
+	 	  	  	  else $layer.msg(out.message);
+	 	  	  })
+	 	  }
+	 },
+	 GetWxType:function(){
+	 	  $data.GetWxType(function(out){
+	 	  	 if(out.code==200){
+	 	  	 	 var arr = out.data;
+	 	  	 	 var option ="";
+	 	  	 	 $.each(arr,function(i,sub){
+                    option +="<option value='"+sub.id+"'>"+sub.name+"</option>";
+	 	  	 	 });
+	 	  	 	 $("#wx_type_list").html(option);
+	 	  	 }
+	 	  })
+	 }
+}
+var $datalayer ={
+	WxTypeAdd:function(){
+		  layer.open({
+		  type: 1,
+		  title: '维护类型', //样式类名
+		  closeBtn: 1, //不显示关闭按钮
+		  area: ['300px', '180px'], //宽高
+		  shadeClose: true, //开启遮罩关闭
+		  content: '<div class="c-box f-l ml-10 mt-20">'+
+		             '<div class="left f-l">公众号类型：</div>'+
+		             '<div class="right f-l"><input type="text" id="field" value="" class="input-text radius size-M"/></div>'+
+		             '<div class="c-botton mt-15 f-l">'+
+		               '<a class="btn btn-primary radius" id="add">确定</a>&nbsp;&nbsp;'+
+		               '<a class="btn btn-default radius">取消</a>'+
+		             '</div>'+
+		           '</div>'
+		 }); 
+		  $(".btn-default").off().on("click",function(){
+		 	 layer.close($(".layui-layer").attr("times")); //关闭层
+		 })
+		  $("#add").unbind().bind("click",function(){
+		  	   var field = $("#field").val();
+		  	   if(field.trim()==""){
+		  	   	   $layer.msg("不能添加空类型");
+		  	   }
+		  	   else{
+		  	   	   $data.Wx_Ty_Add(field,function(out){
+		  	   	   	   layer.close($(".layui-layer").attr("times")); //关闭层
+		  	   	   	   if(out.code==200){
+		  	   	   	   	   $layer.msg("公众号类型添加成功");
+		  	   	   	   }
+		  	   	   	   else $layer.msg(out.msg);
+		  	   	   })
+		  	   }
+		  })
+	}
+}
+var $mc = {
+	 autoHeight:function(){
+	 	 var h = $(document).height();
+	 	 $(".art-body>.left").css({"height":(h-50)+"px"});
+	 },
+	 goURL:function(url){
+	 	window.location.href = url;
+	 },
+	 showUserOption:function(){
+	 	var obj = $(".option-box");
+	 	var h = obj.height();
+	 	if(h==0){
+	 	   obj.animate({
+	 	   	  height:"80px"
+	 	   })
+	 	}
+	 	else{
+	 		 obj.animate({
+	 	   	  height:"0px"
+	 	   })
+	 	}
+	 },
+	 AllCheckBox:function(iscb){
+	 	 $("input[name='cb']").each(function(){	 	 
+	 	 	 $(this).prop("checked",iscb)
+	 	 })
+	 },
+	 isLogin:function(backcall){
+	 	 if($.cookie("username")=="null"){
+			$mc.goURL("login.html");
+		 }	 	 
+	 }
+}
+var $layer ={
+	  msg:function(str){
+	  	 layer.msg(str);
+	  }
+}

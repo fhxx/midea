@@ -1,0 +1,1079 @@
+<?php
+namespace Home\Controller;
+use Think\Controller;
+class IndexController extends Controller {
+    public function index($id=0){
+        $com = $_POST["com"];
+        $par = $_POST["par"];
+        $arr = json_decode($par,true);
+        $this ->Log($com);
+        $this ->Log($par);
+        $str ="";
+        switch ($com) {
+          case 'login':
+             $str = $this -> Login($arr);
+          break;
+          case 'Wx_Ty_Add':
+             $str = $this -> Wx_Ty_Add($arr);
+          break;
+          case 'Wx_Read_Ty': //读取微信类型列表
+             $str = $this -> Wx_Read_Ty($arr);
+            break;
+          case 'MediaType':
+             $str = $this -> MediaType();          
+            break;
+          case 'AddWx':
+            $str = $this -> AddWx($arr);
+            break; 
+          case 'AddWb':
+            $str = $this -> AddWb($arr);
+            break; 
+          case 'Addapp':
+            $str = $this -> Addapp($arr);
+            break;    
+           case 'AddNews':
+            $str = $this -> AddNews($arr);
+            break;     
+          case 'Ordertake':
+            $str = $this -> Ordertake($arr);
+            break;
+          case 'Wx_Range_Add':
+             $str = $this -> Wx_Range_Add($arr);
+            break;
+          case 'wxList':  //获取微信列表
+            $str = $this -> wxList($arr);
+            break;
+          case 'wbList':  //获取微博列表
+            $str = $this -> wbList($arr);
+            break;
+          case 'appList':  //获取微博列表
+            $str = $this -> appList($arr);
+            break;
+          case 'newsList':  //获取新闻列表
+            $str = $this -> newsList($arr);
+            break;
+          case 'delWxData': //删除数据
+            $str = $this -> delWxData($arr);
+            break;
+          case 'delWbData': //删除微博数据
+            $str = $this -> delWbData($arr);
+            break;
+          case 'delAppData': //删除微博数据
+            $str = $this -> delAppData($arr);
+            break;
+          case 'delNewsData': //删除新闻数据
+            $str = $this -> delNewsData($arr);
+            break;
+          case 'UpdateFans':
+             $str = $this -> UpdateFans($arr);
+             break;
+          case 'EditAppMemo':
+             $str = $this -> EditAppMemo($arr);
+             break; 
+          case 'EditNewsMemo':
+             $str = $this -> EditNewsMemo($arr);
+             break;
+          case 'UpdateFansWb':
+             $str = $this -> UpdateFansWb($arr);
+          case 'UpdateRead':
+             $str = $this -> UpdateRead($arr);
+            break;
+          case 'PriceEdit':
+             $str = $this -> PriceEdit($arr);
+            break;
+          case 'PriceEditWb':
+             $str = $this -> PriceEditWb($arr);           
+            break;
+          case 'PriceEditApp':
+             $str = $this -> PriceEditApp($arr);           
+            break; 
+           case 'PriceEditNews':
+             $str = $this -> PriceEditNews($arr);           
+            break;
+          case 'HomePageRecommend': 
+            $str  = $this -> HomePageRecommend($arr);
+            break;
+          case 'WbHomePageRecommend': 
+            $str  = $this -> WbHomePageRecommend($arr);
+            break;
+          case 'RemovedHome':
+             $str = $this -> RemovedHome($arr);           
+            break;
+          case 'WbRemovedHome':
+             $str = $this -> WbRemovedHome($arr);           
+            break;
+          case 'distinctCity'://获取库中城市不重复的数据
+             $str = $this -> distinctCity($arr);
+            break;
+          default:
+            # code...
+            break;
+        }        
+        echo $str;
+
+   }
+   public function Login($par){
+         
+       $Model = M();
+       $this -> Log("select * from users where username='". $par["username"]."' and password='".md5($par['password'])."'");
+       $list = $Model
+               ->query("select * from users where username='". $par["username"]."' and password='".md5($par['password'])."'");
+      
+       $str = "";
+       if($list){
+           $str = $this -> Json("200","登录成功","");
+       }
+       else  $str = $this -> Json("201","登录失败","");
+
+       return $str;
+
+   }
+   public function Wx_Ty_Add($par){
+       try{
+       $wx = M("weixinType");
+       $this -> Log("1222223");
+       $arr = array('name' => $par["name"],"type"=>$par["type"]);
+       $str = "";
+       if($wx->add($arr)){
+           $str = $this -> Json("200","类型添加成功","");
+       }
+       else $str = $this -> Json("201","类型添加失败","");
+       return $str;
+     }
+     catch(Exception $e){
+         $this -> Log($e->getMessage());
+     }
+   }
+   public function Wx_Range_Add($par){
+       $wx = M("ordertakeRange");
+       $arr = array('name' => $par["name"],"type" => $par["type"] );
+       $str = "";
+       if($wx->add($arr)){
+           $str = $this -> Json("200","success","");
+       }
+       else $str = $this -> Json("201","error","");
+
+       return $str;
+   }
+   public function Wx_Read_Ty($par){
+        $type = $par["type"];
+        $wx = M("weixinType");
+        $res = $wx -> field("id,name") -> where(array("type"=>$type)) -> select();  
+        $str = "";
+        foreach ($res as $k => $v) {
+           $str .="{\"id\":\"".$v["id"]."\",\"name\":\"".$v["name"]."\"},";
+        }      
+        if(strlen($str)>0) {
+            return  $this -> Json("200","list",substr($str,0,-1));
+        }
+        else return $this->Json("201","error: list is empty","");
+   }
+   public function MediaType(){
+        $wx = M("mediaType");
+        $res = $wx -> field("id,name") -> select();
+
+        $str = "";
+        foreach ($res as $k => $v) {
+           $str .="{\"id\":\"".$v["id"]."\",\"name\":\"".$v["name"]."\"},";
+        }      
+        if(strlen($str)>0) {
+            return  $this -> Json("200","list",substr($str,0,-1));
+        }
+        else return $this->Json("201","error: list is empty","");
+
+   }
+   public function Ordertake($par){
+       $model = M("ordertakeRange");
+       $res = $model -> field("id,name") -> where(array("type"=>$par["type"])) ->select();
+       $str = "";
+        foreach ($res as $k => $v) {
+           $str .="{\"id\":\"".$v["id"]."\",\"name\":\"".$v["name"]."\"},";
+        }      
+        if(strlen($str)>0) {
+            return  $this -> Json("200","list",substr($str,0,-1));
+        }
+        else return $this->Json("201","error: list is empty","");
+   }
+   //添加微信公账号
+   public function AddWx($par){
+       $model = M("weixin","tg_");
+       $arr = array('weixin_type_id'          =>    $par["weixin_type_id"],
+                    'media_type_id'           =>    $par["media_type_id"],
+                    'wx_name'                 =>    $par["wx_name"],
+                    'wx_id'                   =>    $par["wx_id"],
+                    'media_intro'             =>    $par["media_intro"],
+                    'fans_amount'             =>    $par["fans_amount"],
+                    'read_avg_amount'         =>    $par["read_avg_amount"],
+                    'is_qualification'        =>    $par["is_qualification"],
+                    'qualification_body'      =>    $par["qualification_body"],
+                    'tags'                    =>    $par["tags"],
+                    'hard_1_price'            =>    $par["hard_1_price"],
+                    'hard_1_add'              =>    $par["hard_1_add"],
+                    'hard_2_price'            =>    $par["hard_2_price"],
+                    'hard_2_add'              =>    $par["hard_2_add"],
+                    'soft_1_price'            =>    $par["soft_1_price"],
+                    'soft_1_add'              =>    $par["soft_1_add"],
+                    'soft_2_price'            =>    $par["soft_2_price"],
+                    'soft_2_add'              =>    $par["soft_2_add"],
+                    'is_homepage_recommend'   =>    $par["is_homepage_recommend"],
+                    'ordertake_range_id'      =>    $par["ordertake_range_id"],
+                    'username'                =>    $par["username"],
+                    'province'                =>    $par["province"],
+                    'city'                    =>    $par["city"],
+                    'county'                  =>    $par["county"],
+                    'head_img'                =>    $par["head_img"],
+                    'created_at'              =>    date('y-m-d H:i:s',time()),
+                    'updated_at'              =>    date('y-m-d H:i:s',time()),
+                    'is_del'                  =>   '0');
+
+      if($model->add($arr)){
+          return $this -> Json("200","success","");
+      }
+      else return $this -> Json("201","error","");      
+     
+   }
+
+    //添加微博公账号
+   public function AddWb($par){
+       $model = M("weibo","tg_");
+       $arr = array('weixin_type_id'       =>    $par["weixin_type_id"],
+                    'media_type_id'        =>    $par["media_type_id"],
+                    'wb_name'                 =>    $par["wb_name"],                    
+                    'media_intro'             =>    $par["media_intro"],
+                    'fans_amount'             =>    $par["fans_amount"],                   
+                    'is_qualification'        =>    $par["is_qualification"],                  
+                    'tags'                    =>    $par["tags"],
+                    'hard_1_price'            =>    $par["hard_1_price"],
+                    'hard_1_add'              =>    $par["hard_1_add"],
+                    'hard_2_price'            =>    $par["hard_2_price"],
+                    'hard_2_add'              =>    $par["hard_2_add"],
+                    'soft_1_price'            =>    $par["soft_1_price"],
+                    'soft_1_add'              =>    $par["soft_1_add"],
+                    'soft_2_price'            =>    $par["soft_2_price"],
+                    'soft_2_add'              =>    $par["soft_2_add"],
+                    'is_homepage_recommend'   =>    $par["is_homepage_recommend"],
+                    'ordertake_range_id'      =>    $par["ordertake_range_id"],
+                    'username'                =>    $par["username"],
+                    'province'                =>    $par["province"],
+                    'city'                    =>    $par["city"],
+                    'county'                  =>    $par["county"],
+                    'created_at'              =>    date('y-m-d H:i:s',time()),
+                    'updated_at'              =>    date('y-m-d H:i:s',time()),
+                    'head_img'                =>    $par["head_img"],
+                    'is_del'                  =>   '0');
+
+      if($model->add($arr)){
+          return $this -> Json("200","success","");
+      }
+      else return $this -> Json("201","error","");      
+     
+   }
+   //添加app
+   public function Addapp($par){
+        $model = M("app","tg_");
+        $arr = array('appname'         =>   $par["appname"],
+                     'martname'        =>   $par["martname"],
+                     'comment_price'   =>   $par["comment_price"],
+                     'comment_add'     =>   $par["comment_add"],
+                     'download_price'  =>   $par['download_price'],
+                     'download_add'    =>   $par['download_add'],
+                     'memo'            =>   $par['memo'],
+                     'username'        =>   $par["username"],
+                     'created_at'      =>   date('y-m-d H:i:s',time()),
+                     'updated_at'      =>   date('y-m-d H:i:s',time()),
+                     'is_del'           =>   '0');
+      if($model->add($arr)){
+          return $this -> Json("200","success","");
+      }
+      else return $this -> Json("201","error","");   
+   }
+   public function AddNews($par){
+       $model = M("news","tg_");
+       $arr = array('media_name'      =>   $par["media_name"],
+                    'media_type_id'   =>   $par["media_type_id"],
+                    'media_intro'     =>   $par["media_intro"],
+                    'sl_type'         =>   $par["sl_type"],
+                    'media_channel'   =>   $par["media_channel"],
+                    'web_url'         =>   $par["web_url"],
+                    'mh_type'         =>   $par["mh_type"],
+                    'created_at'      =>   date('y-m-d H:i:s',time()),
+                    'updated_at'      =>   date('y-m-d H:i:s',time()),
+                    'price'           =>   $par["price"],
+                    'price_add'       =>   $par["price_add"],
+                    'username'        =>   $par["username"],
+                    'province'        =>   $par["province"],
+                    'city'            =>   $par["city"],
+                    'head_img'        =>    $par["head_img"],
+                    'county'          =>   $par["county"],
+                    'is_del'          =>   '0');
+      if($model->add($arr)){
+          return $this -> Json("200","success","");
+      }
+      else return $this -> Json("201","error","");    
+   }
+
+   //获取微信列表
+   public function wxList($par){ 
+
+       $model = M("weixin","tg_");
+       $list = null;
+       $count = 0;//数据总数
+       $showp = 20;//每页显示信息条数
+       $p = (int)$par["p"];//当前第几页 
+       $json ="";
+       if((int)$par["count"]==0){
+            
+            $arr = array('is_del' => 0 );
+            $list = $model  -> where($arr) 
+                            -> order("id desc")
+                            -> limit((($p-1)*$showp).",".$showp)
+                            -> select();
+            $count = count($model->field("id")->where($arr)->select());//总的数据条数         
+            $str = "";           
+            foreach ($list as $k => $v) {
+               $str  .="{
+                         \"id\"                    :  \"".$v['id']."\",
+                         \"weixin_type\"           :  \"".$this -> GetWxType($v['weixin_type_id'])."\",
+                         \"media_type\"            :  \"".$this -> GetMediaType($v["media_type_id"])."\",
+                         \"wx_name\"               :  \"".$v["wx_name"]."\",
+                         \"wx_id\"                 :  \"".$v["wx_id"]."\",
+                         \"media_intro\"           :  \"".$v["media_intro"]."\",
+                         \"fans_amount\"           :  \"".$v["fans_amount"]."\",
+                         \"read_avg_amount\"       :  \"".$v["read_avg_amount"]."\",
+                         \"is_qualification\"      :  \"".$v["is_qualification"]."\",
+                         \"qualification_body\"    :  \"".$v["qualification_body"]."\",
+                         \"tags\"                  :  \"".$v["tags"]."\",
+                         \"hard_1_price\"          :  \"".$v["hard_1_price"]."\",
+                         \"hard_1_add\"            :  \"".$v["hard_1_add"]."\",
+                         \"hard_2_price\"          :  \"".$v["hard_2_price"]."\",
+                         \"hard_2_add\"            :  \"".$v["hard_2_add"]."\",
+                         \"soft_1_price\"          :  \"".$v["soft_1_price"]."\",
+                         \"soft_1_add\"            :  \"".$v["soft_1_add"]."\",
+                         \"soft_2_price\"          :  \"".$v["soft_2_price"]."\",
+                         \"soft_2_add\"            :  \"".$v["soft_2_add"]."\",
+                         \"is_homepage_recommend\" :  \"".$v["is_homepage_recommend"]."\",
+                         \"ordertake_range_id\"    :  \"".$v["ordertake_range_id"]."\",
+                         \"username\"              :  \"".$v["username"]."\",
+                         \"province\"              :  \"".$v["province"]."\",
+                         \"city\"                  :  \"".$v["city"]."\",
+                         \"county\"                :  \"".$v["county"]."\",
+                         \"created_at\"            :  \"".$v["created_at"]."\",
+                         \"updated_at\"            :  \"".$v["updated_at"]."\"
+                       },";
+            }
+            
+            if($count>0) $json = $this -> PageJson("200","success",$count,ceil($count/$showp),substr($str,0,-1));
+            else $json = $this ->  PageJson("200","error data is empty","0","0","");                    
+       }
+       else{
+        
+
+           $arr = array("is_del" =>0);
+
+           if((int)$par["weixin_type_id"]>0){
+                $arr["weixin_type_id"]  =  $par["weixin_type_id"];
+           }    
+           if((int)$par["media_type_id"]>0) {
+                $arr["media_type_id"]  =  $par["media_type_id"];
+           }   
+           if($par["wx_name"]!="") {
+                $arr["wx_name"]   =  $par["wx_name"];
+           }             
+           if((int)$par["is_homepage_recommend"]>0){
+                $arr["is_homepage_recommend"]  = $par["is_homepage_recommend"];
+           }
+           if ($par["id"]!="") {
+                $arr["id"] = $par["id"];
+           }
+           if ($par["fans_amount"]!="0") {  
+               $sub = explode("-",$par["fans_amount"]);
+               $arr["fans_amount"] = array(array("GT",$sub[0]),array("LT",$sub[1]),"and");
+           }
+           if($par["read_avg_amount"]!="0"){
+               $sub = explode("-",$par["read_avg_amount"]);
+               $arr["read_avg_amount"] = array(array("GT",$sub[0]),array("LT",$sub[1]),"and");
+           }
+           if((int)$par["is_qualification"]>0){
+               $arr["is_qualification"] = $par["is_qualification"];
+           }
+           if($par["ordertake_range_id"]){
+               $arr["ordertake_range_id"] = $par["ordertake_range_id"];
+           }
+           if($par["hard_1_price"]!="0"){
+               $sub = explode("-",$par["hard_1_price"]);
+               $arr["hard_1_price"] = array(array("GT",$sub[0]),array("LT",$sub[1]),"and");
+           }
+           if($par["hard_2_price"]!="0"){
+               $sub = explode("-",$par["hard_2_price"]);
+               $arr["hard_2_price"] = array(array("GT",$sub[0]),array("LT",$sub[1]),"and");
+           }
+           if($par["soft_1_price"]!="0"){
+               $sub = explode("-",$par["soft_1_price"]);
+               $arr["soft_1_price"] = array(array("GT",$sub[0]),array("LT",$sub[1]),"and");
+           }
+           if($par["soft_2_price"]!="0"){
+               $sub = explode("-",$par["soft_2_price"]);
+               $arr["soft_2_price"] = array(array("GT",$sub[0]),array("LT",$sub[1]),"and");
+           }
+           
+           $list = $model   -> where($arr) 
+                            -> order("id desc")
+                            -> limit((($p-1)*$showp).",".$showp)
+                            -> select();
+           $count = count($model->field("id")->where($arr)->select());//总的数据条数   
+
+           $str = "";           
+            foreach ($list as $k => $v) {
+               $str  .="{
+                         \"id\"                    :  \"".$v['id']."\",
+                         \"weixin_type\"           :  \"".$this -> GetWxType($v['weixin_type_id'])."\",
+                         \"media_type\"            :  \"".$this -> GetMediaType($v["media_type_id"])."\",
+                         \"wx_name\"               :  \"".$v["wx_name"]."\",
+                         \"wx_id\"                 :  \"".$v["wx_id"]."\",
+                         \"media_intro\"           :  \"".$v["media_intro"]."\",
+                         \"fans_amount\"           :  \"".$v["fans_amount"]."\",
+                         \"read_avg_amount\"       :  \"".$v["read_avg_amount"]."\",
+                         \"is_qualification\"      :  \"".$v["is_qualification"]."\",
+                         \"qualification_body\"    :  \"".$v["qualification_body"]."\",
+                         \"tags\"                  :  \"".$v["tags"]."\",
+                         \"hard_1_price\"          :  \"".$v["hard_1_price"]."\",
+                         \"hard_1_add\"            :  \"".$v["hard_1_add"]."\",
+                         \"hard_2_price\"          :  \"".$v["hard_2_price"]."\",
+                         \"hard_2_add\"            :  \"".$v["hard_2_add"]."\",
+                         \"soft_1_price\"          :  \"".$v["soft_1_price"]."\",
+                         \"soft_1_add\"            :  \"".$v["soft_1_add"]."\",
+                         \"soft_2_price\"          :  \"".$v["soft_2_price"]."\",
+                         \"soft_2_add\"            :  \"".$v["soft_2_add"]."\",
+                         \"is_homepage_recommend\" :  \"".$v["is_homepage_recommend"]."\",
+                         \"ordertake_range_id\"    :  \"".$v["ordertake_range_id"]."\",
+                         \"username\"              :  \"".$v["username"]."\",
+                         \"province\"              :  \"".$v["province"]."\",
+                         \"city\"                  :  \"".$v["city"]."\",
+                         \"county\"                :  \"".$v["county"]."\",
+                         \"created_at\"            :  \"".$v["created_at"]."\",
+                         \"updated_at\"            :  \"".$v["updated_at"]."\"
+                       },";
+            } 
+
+           if($count>0) $json = $this -> PageJson("200","success",$count,ceil($count/$showp),substr($str,0,-1));
+           else $json = $this ->  PageJson("200","error data is empty","0","0","");
+       }
+
+
+       return $json;
+       
+
+   }
+
+   public function wbList($par){
+       $model = M("weibo","tg_");
+       $list = null;
+       $count = 0;//数据总数
+       $showp = 20;//每页显示信息条数
+       $p = (int)$par["p"];//当前第几页 
+       $json ="";
+         
+       if((int)$par["count"]==0){
+
+            $arr = array('is_del' => 0 );
+            $list = $model  -> where($arr) 
+                            -> order("id desc")
+                            -> limit((($p-1)*$showp).",".$showp)
+                            -> select();
+            $count = count($model->field("id")->where($arr)->select());//总的数据条数         
+            $str = "";         
+            foreach ($list as $k => $v) {
+               $str  .="{
+                         \"id\"                    :  \"".$v['id']."\",
+                         \"weixin_type\"           :  \"".$this -> GetWxType($v['weixin_type_id'])."\",
+                         \"media_type\"            :  \"".$this -> GetMediaType($v["media_type_id"])."\",
+                         \"wb_name\"               :  \"".$v["wb_name"]."\",                        
+                         \"media_intro\"           :  \"".$v["media_intro"]."\",
+                         \"fans_amount\"           :  \"".$v["fans_amount"]."\",                       
+                         \"is_qualification\"      :  \"".$v["is_qualification"]."\",                        
+                         \"tags\"                  :  \"".$v["tags"]."\",
+                         \"hard_1_price\"          :  \"".$v["hard_1_price"]."\",
+                         \"hard_1_add\"            :  \"".$v["hard_1_add"]."\",
+                         \"hard_2_price\"          :  \"".$v["hard_2_price"]."\",
+                         \"hard_2_add\"            :  \"".$v["hard_2_add"]."\",
+                         \"soft_1_price\"          :  \"".$v["soft_1_price"]."\",
+                         \"soft_1_add\"            :  \"".$v["soft_1_add"]."\",
+                         \"soft_2_price\"          :  \"".$v["soft_2_price"]."\",
+                         \"soft_2_add\"            :  \"".$v["soft_2_add"]."\",
+                         \"is_homepage_recommend\" :  \"".$v["is_homepage_recommend"]."\",
+                         \"ordertake_range_id\"    :  \"".$v["ordertake_range_id"]."\",
+                         \"username\"              :  \"".$v["username"]."\",
+                         \"province\"              :  \"".$v["province"]."\",
+                         \"city\"                  :  \"".$v["city"]."\",
+                         \"county\"                :  \"".$v["county"]."\",
+                         \"created_at\"            :  \"".$v["created_at"]."\",
+                         \"updated_at\"            :  \"".$v["updated_at"]."\"
+                       },";
+            }
+            
+            if($count>0) $json = $this -> PageJson("200","success",$count,ceil($count/$showp),substr($str,0,-1));
+            else $json = $this ->  PageJson("200","error data is empty","0","0","");   
+           $this -> Log("1234567890");   
+       }
+       else{
+
+           $arr = array("is_del" =>0);
+
+           if((int)$par["weixin_type_id"]>0){
+                $arr["weixin_type_id"]  =  $par["weixin_type_id"];
+           }    
+           if((int)$par["media_type_id"]>0) {
+                $arr["media_type_id"]  =  $par["media_type_id"];
+           }   
+           if($par["wb_name"]!="") {
+                $arr["wb_name"]   =  $par["wb_name"];
+           }             
+           if((int)$par["is_homepage_recommend"]>0){
+                $arr["is_homepage_recommend"]  = $par["is_homepage_recommend"];
+           }
+           if ($par["id"]!="") {
+                $arr["id"] = $par["id"];
+           }
+           if ($par["fans_amount"]!="0") {  
+               $sub = explode("-",$par["fans_amount"]);
+               $arr["fans_amount"] = array(array("GT",$sub[0]),array("LT",$sub[1]),"and");
+           }           
+           if((int)$par["is_qualification"]>0){
+               $arr["is_qualification"] = $par["is_qualification"];
+           }
+           if($par["ordertake_range_id"]){
+               $arr["ordertake_range_id"] = $par["ordertake_range_id"];
+           }
+           if($par["city"]!="0"){
+               $arr["city"] = $par["city"];
+           }
+           if($par["hard_1_price"]!="0"){
+               $sub = explode("-",$par["hard_1_price"]);
+               $arr["hard_1_price"] = array(array("GT",$sub[0]),array("LT",$sub[1]),"and");
+           }
+           if($par["hard_2_price"]!="0"){
+               $sub = explode("-",$par["hard_2_price"]);
+               $arr["hard_2_price"] = array(array("GT",$sub[0]),array("LT",$sub[1]),"and");
+           }
+           if($par["soft_1_price"]!="0"){
+               $sub = explode("-",$par["soft_1_price"]);
+               $arr["soft_1_price"] = array(array("GT",$sub[0]),array("LT",$sub[1]),"and");
+           }
+           if($par["soft_2_price"]!="0"){
+               $sub = explode("-",$par["soft_2_price"]);
+               $arr["soft_2_price"] = array(array("GT",$sub[0]),array("LT",$sub[1]),"and");
+           }
+           $list = $model   -> where($arr) 
+                            -> order("id desc")
+                            -> limit((($p-1)*$showp).",".$showp)
+                            -> select();
+           $count = count($model->field("id")->where($arr)->select());//总的数据条数   
+
+           $str = "";           
+          foreach ($list as $k => $v) {
+               $str  .="{
+                         \"id\"                    :  \"".$v['id']."\",
+                         \"weixin_type\"           :  \"".$this -> GetWxType($v['weixin_type_id'])."\",
+                         \"media_type\"            :  \"".$this -> GetMediaType($v["media_type_id"])."\",
+                         \"wb_name\"               :  \"".$v["wb_name"]."\",                        
+                         \"media_intro\"           :  \"".$v["media_intro"]."\",
+                         \"fans_amount\"           :  \"".$v["fans_amount"]."\",                       
+                         \"is_qualification\"      :  \"".$v["is_qualification"]."\",                        
+                         \"tags\"                  :  \"".$v["tags"]."\",
+                         \"hard_1_price\"          :  \"".$v["hard_1_price"]."\",
+                         \"hard_1_add\"            :  \"".$v["hard_1_add"]."\",
+                         \"hard_2_price\"          :  \"".$v["hard_2_price"]."\",
+                         \"hard_2_add\"            :  \"".$v["hard_2_add"]."\",
+                         \"soft_1_price\"          :  \"".$v["soft_1_price"]."\",
+                         \"soft_1_add\"            :  \"".$v["soft_1_add"]."\",
+                         \"soft_2_price\"          :  \"".$v["soft_2_price"]."\",
+                         \"soft_2_add\"            :  \"".$v["soft_2_add"]."\",
+                         \"is_homepage_recommend\" :  \"".$v["is_homepage_recommend"]."\",
+                         \"ordertake_range_id\"    :  \"".$v["ordertake_range_id"]."\",
+                         \"username\"              :  \"".$v["username"]."\",
+                         \"province\"              :  \"".$v["province"]."\",
+                         \"city\"                  :  \"".$v["city"]."\",
+                         \"county\"                :  \"".$v["county"]."\",
+                         \"created_at\"            :  \"".$v["created_at"]."\",
+                         \"updated_at\"            :  \"".$v["updated_at"]."\"
+                       },";
+            } 
+
+           if($count>0) $json = $this -> PageJson("200","success",$count,ceil($count/$showp),substr($str,0,-1));
+           else $json = $this ->  PageJson("200","error data is empty","0","0","");
+       }
+
+       return $json;
+   }
+   
+   public function appList($par){
+       $model = M("app","tg_");
+       $list = null;
+       $count = 0;//数据总数
+       $showp = 20;//每页显示信息条数
+       $p = (int)$par["p"];//当前第几页 
+       $json ="";
+         
+       if((int)$par["count"]==0){
+            $arr = array('is_del' => 0 );
+            $list = $model  -> where($arr) 
+                            -> order("id desc")
+                            -> limit((($p-1)*$showp).",".$showp)
+                            -> select();
+            $count = count($model->field("id")->where($arr)->select());//总的数据条数         
+            $str = ""; 
+            foreach ($list as $k => $v) {
+                $str  .="{
+                           \"id\"                    :  \"".$v['id']."\",
+                           \"appname\"               :  \"".$v["appname"]."\", 
+                           \"martname\"              :  \"".$v["martname"]."\",
+                           \"comment_price\"         :  \"".$v["comment_price"]."\",
+                           \"comment_add\"           :  \"".$v["comment_add"]."\",
+                           \"download_price\"        :  \"".$v["download_price"]."\",
+                           \"download_add\"          :  \"".$v["download_add"]."\",
+                           \"memo\"                  :  \"".$v["memo"]."\"
+                         },";
+            }       
+            if($count>0) $json = $this -> PageJson("200","success",$count,ceil($count/$showp),substr($str,0,-1));
+            else $json = $this ->  PageJson("200","error data is empty","0","0","");
+       }
+       else{
+           $arr = array("is_del" =>0);
+           if($par["martname"]!="0"){
+                $arr["martname"]  =  $par["martname"];
+           }
+           if($par["appname"]!=""){
+                $arr["appname"]  =  $par["appname"];
+           } 
+           if($par["id"]!=""){
+                $arr["id"]  =  $par["id"];
+           }
+           if($par["comment_price"]!="0"){
+               $sub = explode("-",$par["comment_price"]);
+               $arr["comment_price"] = array(array("GT",$sub[0]),array("LT",$sub[1]),"and");
+           }
+           if($par["download_price"]!="0"){
+               if($par["martname"]=="Android"||$par["martname"]=="WIN") {
+                  $sub = explode("-",$par["download_price"]);
+                  $arr["download_price"] = array(array("GT",$sub[0]),array("LT",$sub[1]),"and");
+             }
+           }
+           $list = $model   -> where($arr) 
+                            -> order("id desc")
+                            -> limit((($p-1)*$showp).",".$showp)
+                            -> select();
+           $count = count($model->field("id")->where($arr)->select());//总的数据条数   
+
+           $str = ""; 
+           foreach ($list as $k => $v) {
+                $str  .="{
+                           \"id\"                    :  \"".$v['id']."\",
+                           \"appname\"               :  \"".$v["appname"]."\", 
+                           \"martname\"              :  \"".$v["martname"]."\",
+                           \"comment_price\"         :  \"".$v["comment_price"]."\",
+                           \"comment_add\"           :  \"".$v["comment_add"]."\",
+                           \"download_price\"        :  \"".$v["download_price"]."\",
+                           \"download_add\"          :  \"".$v["download_add"]."\",
+                           \"memo\"                  :  \"".$v["memo"]."\"
+                         },";
+            }       
+            if($count>0) $json = $this -> PageJson("200","success",$count,ceil($count/$showp),substr($str,0,-1));
+            else $json = $this ->  PageJson("200","error data is empty","0","0","");
+       }
+
+       return $json;
+       
+   }
+
+   public function newsList($par){
+       $model = M("news","tg_");
+       $list = null;
+       $count = 0;//数据总数
+       $showp = 20;//每页显示信息条数
+       $p = (int)$par["p"];//当前第几页 
+       $json ="";
+       if((int)$par["count"]==0){
+            $arr = array('is_del' => 0 );
+            $list = $model  -> where($arr) 
+                            -> order("id desc")
+                            -> limit((($p-1)*$showp).",".$showp)
+                            -> select();
+            $count = count($model->field("id")->where($arr)->select());//总的数据条数         
+            $str = ""; 
+            foreach ($list as $k => $v) {
+                $str  .="{
+                           \"id\"                    :  \"".$v['id']."\",
+                           \"media_name\"            :  \"".$v["media_name"]."\", 
+                           \"media_type\"            :  \"".$this -> GetMediaType($v["media_type_id"])."\",
+                           \"media_intro\"           :  \"".$v["media_intro"]."\",
+                           \"sl_type\"               :  \"".$v["sl_type"]."\",
+                           \"media_channel\"         :  \"".$v["media_channel"]."\",
+                           \"web_url\"               :  \"".$v["web_url"]."\",
+                           \"mh_type\"               :  \"".$v["mh_type"]."\",
+                           \"price\"                 :  \"".$v["price"]."\",
+                           \"price_add\"             :  \"".$v["price_add"]."\",
+                           \"province\"              :  \"".$v["province"]."\",
+                           \"city\"                  :  \"".$v["city"]."\",
+                           \"county\"                :  \"".$v["county"]."\"
+                         },";
+            }
+            if($count>0) $json = $this -> PageJson("200","success",$count,ceil($count/$showp),substr($str,0,-1));
+            else $json = $this ->  PageJson("200","error data is empty","0","0","");
+        }
+        else{
+            
+            $arr = array("is_del" =>0);
+
+            if($par["media_name"]!="") {
+                $arr["media_name"] = $par["media_name"];
+            }
+            if((int)$par["media_type_id"]>0){
+                $arr["media_type_id"] = $par["media_type_id"];
+            }
+            if($par["sl_type"]!="0"){
+                $arr["sl_type"] = $par["sl_type"];
+            }
+            if($par["id"]!=""){
+                $arr["id"] = $par["id"];
+            }
+            if($par["media_channel"]!="0"){
+                $arr["media_channel"] = $par["media_channel"];
+            }
+            if($par["city"]!="0"){
+                $arr["city"] = $par["city"];
+            }
+            if($par["price"]!="0"){
+               $sub = explode("-",$par["price"]);
+               $arr["price"] = array(array("GT",$sub[0]),array("LT",$sub[1]),"and");               
+            }
+            if($par["mh_type"]!="0"){
+                $arr["mh_type"] = $par["mh_type"];
+            }
+           
+            $list = $model  -> where($arr) 
+                            -> order("id desc")
+                            -> limit((($p-1)*$showp).",".$showp)
+                            -> select();
+            $count = count($model->field("id")->where($arr)->select());//总的数据条数         
+            $str = ""; 
+            foreach ($list as $k => $v) {
+                $str  .="{
+                           \"id\"                    :  \"".$v['id']."\",
+                           \"media_name\"            :  \"".$v["media_name"]."\", 
+                           \"media_type\"            :  \"".$this -> GetMediaType($v["media_type_id"])."\",
+                           \"media_intro\"           :  \"".$v["media_intro"]."\",
+                           \"sl_type\"               :  \"".$v["sl_type"]."\",
+                           \"media_channel\"         :  \"".$v["media_channel"]."\",
+                           \"web_url\"               :  \"".$v["web_url"]."\",
+                           \"mh_type\"               :  \"".$v["mh_type"]."\",
+                           \"price\"                 :  \"".$v["price"]."\",
+                           \"price_add\"             :  \"".$v["price_add"]."\",
+                           \"province\"              :  \"".$v["province"]."\",
+                           \"city\"                  :  \"".$v["city"]."\",
+                           \"county\"                :  \"".$v["county"]."\"
+                         },";
+            }
+            if($count>0) $json = $this -> PageJson("200","success",$count,ceil($count/$showp),substr($str,0,-1));
+            else $json = $this ->  PageJson("200","error data is empty","0","0","");
+        }
+
+        return $json;
+      
+   }
+
+   public function HomePageRecommend($par){
+
+        $media_id = $par["media_type_id"];
+        $model = M("weixin","tg_");
+        $res = $model -> field("id,wx_name") 
+                        -> where(array("media_type_id" =>$media_id,"is_homepage_recommend"=>"1")) 
+                        -> select(); 
+        $str = "";
+        foreach ($res as $k => $v) {
+             $str .="{\"id\":\"".$v["id"]."\",\"name\":\"".$v["wx_name"]."\"},";                    
+         }                      
+         $count = count($res);
+         $json = "";
+         if($count>0) $json = $this -> Json("200",$count,substr($str,0,-1));
+         else $json = $this -> Json("200","0","");
+         return $json;
+   }
+
+   public function WbHomePageRecommend($par){
+
+        $media_id = $par["media_type_id"];
+        $model = M("weibo","tg_");
+        $res = $model -> field("id,wb_name") 
+                        -> where(array("media_type_id" =>$media_id,"is_homepage_recommend"=>"1")) 
+                        -> select(); 
+        $str = "";
+        foreach ($res as $k => $v) {
+             $str .="{\"id\":\"".$v["id"]."\",\"name\":\"".$v["wb_name"]."\"},";                    
+         }                      
+         $count = count($res);
+         $json = "";
+         if($count>0) $json = $this -> Json("200",$count,substr($str,0,-1));
+         else $json = $this -> Json("200","0","");
+         return $json;
+   }
+   
+   public function GetWxType($id=0){
+       $str ="<span style=color:#f00>未设</span>";
+       if((int)$id>0){
+          $model = M("weixinType");
+          $res = $model -> where(array("id"=>$id)) -> find();
+          if($res) $str = $res["name"];
+          else $str ="<span style=color:#f00>类型移除</span>";
+       }
+
+       return $str; 
+   }
+   public function GetMediaType($id=0){
+       $str ="<span style=color:#f00>未设</span>";
+       if((int)$id>0){
+          $model = M("mediaType");
+          $res = $model -> where(array("id"=>$id)) -> find();
+          if($res) $str = $res["name"];
+          else $str ="<span style=color:#f00>类型移除</span>";
+       }
+
+       return $str; 
+   }
+   //删除数据
+   public function delWxData($par){
+      $id = $par["id"];
+      $model = M("weixin","tg_");
+      $res = $model->where("id in (".$id.")") -> save(array("is_del"=>1));
+      $str ="";
+      if($res) $str = $this -> Json("200","success","");
+      else $str = $this -> Json("201","delete error data is empty","");
+
+      return $str;
+   }
+   public function delWbData($par){
+       $id = $par["id"];
+       $model = M("weibo","tg_");
+       $res = $model->where("id in (".$id.")") -> save(array("is_del"=>1));
+       $str ="";
+       if($res) $str = $this -> Json("200","success","");
+       else $str = $this -> Json("201","delete error data is empty","");
+
+       return $str;
+   }
+   public function delAppData($par){
+       $id = $par["id"];
+       $model = M("app","tg_");
+       $res = $model->where("id in (".$id.")") -> save(array("is_del"=>1));
+       $str ="";
+       if($res) $str = $this -> Json("200","success","");
+       else $str = $this -> Json("201","delete error data is empty","");
+
+       return $str;
+   }
+   public function delNewsData($par){
+       $id = $par["id"];
+       $model = M("news","tg_");
+       $res = $model->where("id in (".$id.")") -> save(array("is_del"=>1));
+       $str ="";
+       if($res) $str = $this -> Json("200","success","");
+       else $str = $this -> Json("201","delete error data is empty","");
+
+       return $str;
+   }
+   //更新粉丝数量
+   public function UpdateFans($par){
+       $model = M("weixin","tg_");
+       $res = $model -> where("id=".$par["id"]) -> save(array("fans_amount"=>$par["amount"]));
+
+       $str ="";
+       if($res) $str = $this -> Json("200","success","");
+       else $str = $this -> Json("201","delete error data is empty","");
+
+       return $str;
+   }
+   public function EditAppMemo($par){
+       $model = M("app","tg_");
+        $res = $model -> where("id=".$par["id"]) -> save(array("memo"=>$par["memo"]));
+      
+       $str ="";
+       if($res) $str = $this -> Json("200","success","");
+       else $str = $this -> Json("201","delete error data is empty","");
+
+       return $str;
+   }
+   public function EditNewsMemo($par){
+       $model = M("news","tg_");
+       $res = $model -> where("id=".$par["id"]) -> save(array("media_intro"=>$par["memo"]));
+      
+       $str ="";
+       if($res) $str = $this -> Json("200","success","");
+       else $str = $this -> Json("201","delete error data is empty","");
+
+       return $str;
+   }
+   //更新微博粉丝数量
+   public function UpdateFansWb($par){
+       $model = M("weibo  ","tg_");
+       $res = $model -> where("id=".$par["id"]) -> save(array("fans_amount"=>$par["amount"]));
+
+       $str ="";
+       if($res) $str = $this -> Json("200","success","");
+       else $str = $this -> Json("201","delete error data is empty","");
+
+       return $str;
+   }
+   //更新平均阅读数量
+   public function UpdateRead($par){
+       $model = M("weixin","tg_");
+       $res = $model -> where("id=".$par["id"]) -> save(array("read_avg_amount"=>$par["amount"]));
+       $str ="";
+       if($res) $str = $this -> Json("200","success","");
+       else $str = $this -> Json("201","delete error data is empty","");
+
+       return $str;
+   }
+   public function PriceEdit($par){
+       $model = M("weixin","tg_");
+       $type = $par["type"];      
+       $str ="";      
+       if($type=="hard"){
+           $arr= array('hard_1_price'  => $par["p1"],
+                       'hard_1_add'    => $par["a1"],
+                       'hard_2_price'  => $par["p2"],
+                       'hard_2_add'    => $par["a2"]);
+
+          $res = $model -> where("id=". $par["id"]) -> save($arr);
+          if($res) $str = $this -> Json("200","success","");
+          else $str = $this -> Json("201","delete error data is empty","");
+       }
+       else{
+           $arr= array('soft_1_price'  => $par["p1"],
+                       'soft_1_add'    => $par["a1"],
+                       'soft_2_price'  => $par["p2"],
+                       'soft_2_add'    => $par["a2"]);
+
+          $res = $model -> where("id=". $par["id"]) -> save($arr);
+          if($res) $str = $this -> Json("200","success","");
+          else $str = $this -> Json("201","delete error data is empty","");
+       }
+       return $str;
+
+   }
+
+   public function PriceEditWb($par){
+       $model = M("weibo","tg_");
+       $type = $par["type"];      
+       $str ="";      
+       if($type=="hard"){
+           $arr= array('hard_1_price'  => $par["p1"],
+                       'hard_1_add'    => $par["a1"],
+                       'hard_2_price'  => $par["p2"],
+                       'hard_2_add'    => $par["a2"]);
+
+          $res = $model -> where("id=". $par["id"]) -> save($arr);
+          if($res) $str = $this -> Json("200","success","");
+          else $str = $this -> Json("201","delete error data is empty","");
+       }
+       else{
+           $arr= array('soft_1_price'  => $par["p1"],
+                       'soft_1_add'    => $par["a1"],
+                       'soft_2_price'  => $par["p2"],
+                       'soft_2_add'    => $par["a2"]);
+
+          $res = $model -> where("id=". $par["id"]) -> save($arr);
+          if($res) $str = $this -> Json("200","success","");
+          else $str = $this -> Json("201","delete error data is empty","");
+       }
+       return $str;
+
+   }
+
+   public function PriceEditApp($par){
+
+      $model = M("app","tg_"); 
+      $str ="";
+      $this -> Log($par["type"]);
+     if($par["type"]=="comment"){
+           $arr = array('comment_price' => $par["p1"], 'comment_add' => $par["a1"]);
+           $res = $model -> where("id=". $par["id"]) -> save($arr);
+           if($res) $str = $this -> Json("200","success","");
+           else $str = $this -> Json("201","delete error data is empty","");
+      }
+      else{
+           $arr = array('download_price' => $par["p1"], 'download_add' => $par["a1"]);
+           $res = $model -> where("id=". $par["id"]) -> save($arr);
+           if($res) $str = $this -> Json("200","success","");
+           else $str = $this -> Json("201","delete error data is empty","");
+      }
+      return $str;
+   }
+   public function PriceEditNews($par){
+       $model = M("news","tg_");
+       $arr =  array('price' => $par["p1"] , "price_add" => $par["a1"]);
+       $res = $model -> where("id=". $par["id"]) -> save($arr);
+       $str ="";
+       if($res) $str = $this -> Json("200","success","");
+       else $str = $this -> Json("201","delete error data is empty","");
+       return $str;
+   }
+
+   //移除首页推荐
+   public function RemovedHome($arr){
+       $model = M("weixin","tg_");
+       $res = $model ->where("id in (".$arr["id"].")") ->save(array("is_homepage_recommend" => "0"));
+       if($res) return $this -> Json("200","success","");
+       else return $this -> Json("201","remove error","");
+   }
+    //移除首页推荐
+   public function WbRemovedHome($arr){
+       $model = M("weibo","tg_");
+       $res = $model ->where("id in (".$arr["id"].")") ->save(array("is_homepage_recommend" => "0"));
+       if($res) return $this -> Json("200","success","");
+       else return $this -> Json("201","remove error","");
+   }
+
+   //获取库中城市不重复的数据
+   public function distinctCity($par){
+       $model = null;
+       if($par["type"]=="wx") $model = M("weixin","tg_");
+       else if ($par["type"]=="wb") {
+           $model = M("weibo","tg_");
+       }
+       else if($par["type"]=="news"){
+           $model = M("news","tg_");
+       }
+       $list = $model -> field("city")
+                      -> distinct(true)
+                      -> where("city!='0' and city!=''")
+                      -> select();
+
+       $str = "";
+       foreach ($list as $k => $v) { 
+           $str .= "{\"city\":\"".$v["city"]."\"},";
+       }
+       $json = $this -> Json("201","list is empty");
+       if(strlen($str)>0){
+           $json = $this -> Json("200","success",substr($str,0,-1));
+       }
+
+       return $json;
+
+   }
+
+   public function PageJson($code,$msg,$count,$page,$arr){
+       return "{\"code\":\"".$code."\",\"msg\":\"".$msg."\",\"count\":\"".$count."\",\"page\":\"".$page."\",\"data\":[".$arr."]}";
+   }
+   public function Json($code,$msg,$arr){
+       return "{\"code\":\"".$code."\",\"msg\":\"".$msg."\",\"data\":[".$arr."]}";
+   }
+
+   public function Log($str){
+      $path = date("Ymd").".log";
+      if (!file_exists($path)){
+          fopen($path, "w");   
+      }
+      file_put_contents($path, $str."\r\n",FILE_APPEND);
+     
+   }
+
+}
